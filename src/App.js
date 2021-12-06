@@ -1,12 +1,19 @@
-import './App.css';
-import Item from './components/NEW_COM'
+import { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CharacterDetails from './components/CharacterDetails';
+import CharacterList from './components/CharactersList';
+import FavoritesCharacters from './components/FavoritesCharacters';
 
-function App()
-{
+const App = () => {
   return (
-    <div className="App">
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<CharacterList />} />
+        <Route path="/character/:id" element={<CharacterDetails />} />
+        <Route path="/favorites-characters" element={<FavoritesCharacters />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
