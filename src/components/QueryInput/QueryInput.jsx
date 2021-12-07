@@ -1,8 +1,9 @@
-
+import style from './QueryInput.module.css'
 const QueryInput = ( { onChange } ) =>
 {
   return (
-    <input
+    <input className={style.input}
+      placeholder='Поиск фильма'
       name="query"
       id="gender"
       onChange={( event ) => onChange( event.target.value )}
