@@ -1,12 +1,19 @@
-import './App.css';
-import Item from './components/NEW_COM'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import FilmDetails from './components/FilmDetails';
+import FilmList from './components/FilmList';
+import FavoritesCharacters from './components/FavoritesCharacters';
 
-function App()
+const App = () =>
 {
   return (
-    <div className="App">
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<FilmList />} />
+        <Route path="/:id" element={<FilmDetails />} />
+        <Route path="/watch-list" element={<FavoritesCharacters />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
