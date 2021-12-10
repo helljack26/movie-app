@@ -6,15 +6,14 @@ import style from './FilmList.module.css'
 
 const FilmList = () =>
 {
+
   const [film, setFilms] = useState( [] );
-  const [gender, setGender] = useState( '' );
   const [loading, setLoading] = useState( false );
 
   useEffect( () =>
   {
     const requestFilm = async () =>
     {
-      const params = gender ? `?gender=${gender}` : '';
       setLoading( true );
       const response = await fetch(
         `https://api.themoviedb.org/3/trending/all/day?api_key=4d0c68776909a3f926088d7ddf14c097&language=ru`,
@@ -26,7 +25,7 @@ const FilmList = () =>
     };
 
     requestFilm();
-  }, [gender] );
+  }, [] );
 
   return (
     <>
@@ -37,9 +36,11 @@ const FilmList = () =>
             <header className={style.header}>
               <Link to="/favorites-characters">Watch list</Link>
               <h1>Movie api</h1>
-              <QueryInput onChange={( value ) => setGender( value )} />
+              {/* <QueryInput onChange={( value ) => setGender( value )} /> */}
+              <QueryInput />
             </header>
             <main>
+              <div className={style.popularHeader}><h2>Популярные<br />фильмы</h2></div>
               {film.map( ( { title, name, poster_path, genre_ids, id } ) =>
               {
                 return (
