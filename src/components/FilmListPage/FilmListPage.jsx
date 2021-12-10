@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import FilmCard from '../FilmCard';
-import QueryInput from '../QueryInput';
-import style from './FilmList.module.css'
+import Header from '../Header';
+import FilmListCard from '../FilmListCard';
+import style from './FilmListPage.module.css'
 
-const FilmList = () =>
+const FilmListPage = () =>
 {
-
   const [film, setFilms] = useState( [] );
   const [loading, setLoading] = useState( false );
 
@@ -33,18 +31,13 @@ const FilmList = () =>
         <div>...Loading</div>
       ) : (
           <>
-            <header className={style.header}>
-              <Link to="/favorites-characters">Watch list</Link>
-              <h1>Movie api</h1>
-              {/* <QueryInput onChange={( value ) => setGender( value )} /> */}
-              <QueryInput />
-            </header>
+            <Header />
             <main>
               <div className={style.popularHeader}><h2>Популярные<br />фильмы</h2></div>
               {film.map( ( { title, name, poster_path, genre_ids, id } ) =>
               {
                 return (
-                  <FilmCard
+                  <FilmListCard
                     key={id}
                     id={id}
                     name={title !== undefined ? title : name}
@@ -60,4 +53,4 @@ const FilmList = () =>
   );
 };
 
-export default FilmList;
+export default FilmListPage;

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Header from '../Header';
 
-const FilmDetails = () =>
+const FilmDetailsPage = () =>
 {
   const { id } = useParams();
   const [details, setDetails] = useState( null );
@@ -23,6 +24,7 @@ const FilmDetails = () =>
     <>
       {details ? (
         <div>
+          <Header />
           Character details...
           <pre>{JSON.stringify( details )}</pre>
         </div>
@@ -33,4 +35,4 @@ const FilmDetails = () =>
   );
 };
 
-export default FilmDetails;
+export default FilmDetailsPage;
