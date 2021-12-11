@@ -14,7 +14,7 @@ const FilmListPage = () =>
     {
       setLoading( true );
       const response = await fetch(
-        `https://api.themoviedb.org/3/trending/all/day?api_key=4d0c68776909a3f926088d7ddf14c097&language=ru`,
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=4d0c68776909a3f926088d7ddf14c097&language=ru`,
       );
       const data = await response.json();
       setLoading( false );

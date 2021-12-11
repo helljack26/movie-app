@@ -7,7 +7,8 @@
 	height: auto;
 	display: inline-block;
 	width: 100%;
-	margin-bottom: 20px;
+    margin-bottom: 20px;
+    position: relative;
 }
 .FilmListCard:hover{
     filter: grayscale(1) contrast(1);
@@ -32,4 +33,20 @@ h3{
 }
 .filmDescription{
     padding: 10px 15px;
+}
+.addIcon{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 45px;
+    opacity: 0.8;
+    z-index: 50;
+    cursor: pointer;
+}
+.addIcon:hover{
+    opacity: 1;
+    filter: invert(50%);
+}
+.cardBlock{
+    position: relative;
 }

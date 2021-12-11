@@ -1,14 +1,12 @@
-// import style for span 
-import style from './FilmListCard.module.css'
 // Translate api code genres to russian definition
-export function genresTranslate( genre )
+export function translateGenre( genre )
 {
     const genreArr = genre.map( ( item, id ) => genre.length === 1 ?
         // If only one item in array
-        <span className={style.genre} key={id}>{translate( item )}.</span> :
+        <span key={id}>{translate( item )}.</span> :
         // If more than one item, includes ternary condition that add coma between each items and dot in the end
-        ( id < genre.length - 1 ? <span className={style.genre} key={id}>{translate( item )}, </span> :
-            <span className={style.genre} key={id}>{translate( item )}.</span> )
+        ( id < genre.length - 1 ? <span key={id}>{translate( item )}, </span> :
+            <span key={id}>{translate( item )}.</span> )
     )
     function translate( genre )
     {
