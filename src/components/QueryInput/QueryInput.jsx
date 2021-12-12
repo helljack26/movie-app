@@ -3,10 +3,10 @@ const QueryInput = ( { onChange } ) =>
 {
   return (
     <input className={style.input}
-      placeholder='Поиск фильма'
+      placeholder='Search film'
       name="query"
       id="gender"
-      onChange={( event ) => onChange( event.target.value )}
+    // onChange={( event ) => onChange( event.target.value )}
     />
   );
 };

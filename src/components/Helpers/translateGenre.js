@@ -13,59 +13,59 @@ export function translateGenre( genre )
         switch ( genre )
         {
             case 28:
-                return 'Екшн';
+                return 'Action';
             case 12:
-                return 'Приключения';
+                return 'Adventure';
             case 16:
-                return 'Мультики';
+                return 'Cartoons';
             case 35:
-                return 'Комедия';
+                return 'Comedy';
             case 80:
-                return 'Криминал';
+                return 'Crime';
             case 99:
-                return 'Документальный';
+                return 'Documentary';
             case 18:
-                return 'Драма';
+                return 'Drama';
             case 10751:
-                return 'Семейный';
+                return 'Family';
             case 14:
-                return 'Фентези';
+                return 'Fantasy';
             case 36:
-                return 'Исторический';
+                return 'Historical';
             case 27:
-                return 'Ужасы';
+                return 'Horror';
             case 10402:
-                return 'Мюзикл';
+                return 'Musical';
             case 9648:
-                return 'Мистика';
+                return 'Mystic';
             case 10749:
-                return 'Романтический';
+                return 'Romantic';
             case 878:
-                return 'Научная фантастика';
+                return 'Science fiction';
             case 10770:
-                return 'Телепередача';
+                return 'Telecast';
             case 53:
-                return 'Триллер';
+                return 'Thriller';
             case 10752:
-                return 'Военный';
+                return 'Military';
             case 10759:
-                return 'Екшн и приключения';
+                return 'Action & Adventure';
             case 10764:
-                return 'На реальных событиях';
+                return 'On real events';
             case 10762:
-                return 'Детский';
+                return 'Child';
             case 10763:
-                return 'Новости';
+                return 'News';
             case 10765:
-                return 'Научная фантастика и фентези';
+                return 'Science fiction and fantasy';
             case 10766:
-                return 'Мелодрама';
+                return 'Melodrama';
             case 10767:
-                return 'Подкаст';
+                return 'Podcast';
             case 10768:
-                return 'Война и политика';
+                return 'War and politics';
             case 37:
-                return 'Вестерн';
+                return 'Western';
             default:
                 return
         }

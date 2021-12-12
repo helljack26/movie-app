@@ -7,8 +7,11 @@ const Header = () =>
     return (
         <>
             <header className={style.header}>
-                <Link to="/watch-list">Watch list</Link>
-                <Link to="/"><h1>Movie api</h1></Link>
+                <h1 className={style.logo}>Movie api</h1>
+                <div id='navbar' className={style.navbar}>
+                    <Link to="/" className={style.popular}>Popular</Link>
+                    <Link to="/watch-list" className={style.watch}>Watch list</Link>
+                </div>
                 {/* <QueryInput onChange={( value ) => setGender( value )} /> */}
                 <QueryInput />
             </header>

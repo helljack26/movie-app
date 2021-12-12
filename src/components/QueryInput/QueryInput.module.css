@@ -1,4 +1,20 @@
 .input {
-    border-radius: 10px;
+    background-color: transparent;
+    color: white;
     padding: 5px 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid white;
+    font-size: 1.5rem;
+
+}
+.input::placeholder{
+    color: white;
+}
+.input::placeholder:active{
+    color: rgb(67, 67, 67);
+}
+.input:focus{
+    color: rgb(216, 216, 216);
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
