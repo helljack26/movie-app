@@ -2,16 +2,6 @@ import { Link } from 'react-router-dom';
 import style from './FilmListCard.module.css';
 import { translateGenre } from '../Helpers/translateGenre.js';
 
-
-function enter( target )
-{
-    const div = document.createElement( 'div' )
-    div.innerHTML = 'fdfsffsdds'
-    div.style.fontSize = '5rem'
-    target.relatedTarget.appendChild( div )
-    console.log( target );
-}
-
 const FilmListCard = ( { name, image, genre, id } ) =>
 {
     // Translate api code genres to russian definition 
@@ -30,7 +20,7 @@ const FilmListCard = ( { name, image, genre, id } ) =>
                         <div className={style.genre} >Жанр: {genreArr}</div>
                     </div>
                 </Link>
-                <button type='button'><img src="./img/plus.svg" alt="add to watch list" className={style.addIcon} onMouseEnter={enter} /></button>
+                <button type='button'><img src="./img/plus.svg" alt="add to watch list" className={style.addIcon} /></button>
             </div>
         </>
     );

@@ -48,8 +48,6 @@ export function translateGenre( genre )
                 return 'Триллер';
             case 10752:
                 return 'Военный';
-            case 37:
-                return 'Вестерн';
             case 10759:
                 return 'Екшн и приключения';
             case 10764:

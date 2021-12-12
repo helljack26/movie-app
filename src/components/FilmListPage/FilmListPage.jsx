@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Header from '../Header';
 import FilmListCard from '../FilmListCard';
+import LoadingPage from '../LoadingPage';
 import style from './FilmListPage.module.css'
 
 const FilmListPage = () =>
@@ -12,14 +13,14 @@ const FilmListPage = () =>
   {
     const requestFilm = async () =>
     {
-      setLoading( true );
+      setLoading( true )
       const response = await fetch(
         `https://api.themoviedb.org/3/trending/movie/day?api_key=4d0c68776909a3f926088d7ddf14c097&language=ru`,
       );
       const data = await response.json();
-      setLoading( false );
       console.log( data );
       setFilms( data.results );
+      setLoading( false );
     };
 
     requestFilm();
@@ -28,7 +29,7 @@ const FilmListPage = () =>
   return (
     <>
       {loading ? (
-        <div>...Loading</div>
+        <LoadingPage />
       ) : (
           <>
             <Header />

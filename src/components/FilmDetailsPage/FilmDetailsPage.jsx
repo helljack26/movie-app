@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../Header';
+import LoadingPage from '../LoadingPage';
 import { translateGenre } from '../Helpers/translateGenre.js';
 import style from './FilmDetailsPage.module.css';
 
@@ -34,7 +35,6 @@ const FilmDetailsPage = () =>
         };
         getFilmDetails();
     }, [id] );
-    // const {  , , , , production_companies } = details;
 
     return (
         <>
@@ -60,7 +60,7 @@ const FilmDetailsPage = () =>
                         </div>
                     </>
                 ) : (
-                        <div>Loading...</div>
+                        <LoadingPage />
                     )}
         </>
     );
