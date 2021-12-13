@@ -6,7 +6,7 @@ export function translateGenre( genre )
         <span key={id}>{translate( item )}.</span> :
         // If more than one item, includes ternary condition that add coma between each items and dot in the end
         ( id < genre.length - 1 ? <span key={id}>{translate( item )}, </span> :
-            <span key={id}>{translate( item )}.</span> )
+            <span key={id}>{translate( item )}</span> )
     )
     function translate( genre )
     {

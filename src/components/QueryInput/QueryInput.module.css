@@ -11,10 +11,10 @@
 .input::placeholder{
     color: white;
 }
-.input::placeholder:active{
-    color: rgb(67, 67, 67);
-}
+input:focus::placeholder {
+    color: rgb(189, 189, 189);
+  }
 .input:focus{
-    color: rgb(216, 216, 216);
+    color: rgb(189, 189, 189);
     border-bottom: 1px solid rgb(0, 0, 0);
 }

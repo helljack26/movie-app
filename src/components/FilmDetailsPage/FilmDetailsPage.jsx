@@ -27,7 +27,7 @@ const FilmDetailsPage = () =>
         const getFilmDetails = async () =>
         {
             const response = await fetch(
-                `https://api.themoviedb.org/3/movie/${id}?api_key=4d0c68776909a3f926088d7ddf14c097&language=ru`,
+                `https://api.themoviedb.org/3/movie/${id}?api_key=4d0c68776909a3f926088d7ddf14c097`,
             );
             const data = await response.json();
             console.log( data );
@@ -51,11 +51,10 @@ const FilmDetailsPage = () =>
                             <img src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`} alt={`Постер к фильму ${details.title}`} className={style.poster} />
                             {/* Book detail */}
                             <div className={style.detailBlock}>
-                                <FilmDetailsSubscription property='Жанр' value={translateGenre( details.genres.map( ( item ) => item.id ) )} />
-                                <FilmDetailsSubscription property='Оригинальное название' value={details.original_title} />
-                                <FilmDetailsSubscription property='Киностудия' value={details.production_companies.map( ( item ) => `"${item.name}" ` )} />
-                                <FilmDetailsSubscription property='Продолжительность' value={`${details.runtime} минут`} />
-                                <FilmDetailsSubscription property='Описание' value={details.overview} />
+                                <FilmDetailsSubscription property='Jenres' value={translateGenre( details.genres.map( ( item ) => item.id ) )} />
+                                <FilmDetailsSubscription property='Production' value={details.production_companies.map( ( item ) => `"${item.name}" ` )} />
+                                <FilmDetailsSubscription property='Runtime' value={`${details.runtime} minutes`} />
+                                <FilmDetailsSubscription property='Review' value={details.overview} />
                             </div>
                         </div>
                     </>

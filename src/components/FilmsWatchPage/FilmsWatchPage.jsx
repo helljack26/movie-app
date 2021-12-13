@@ -4,7 +4,7 @@ const FilmsWatchPage = () =>
 {
   return (
     <>
-      <Header />
+      <Header active={'watch'} />
       <div>FilmsWatchPage</div>
     </>
   )

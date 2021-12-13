@@ -32,9 +32,9 @@ const FilmListPage = () =>
         <LoadingPage />
       ) : (
           <>
-            <Header />
+            <Header active={'popular'} />
             <main>
-              <div className={style.popularHeader}><h2>Популярные<br />фильмы</h2></div>
+              <div className={style.popularHeader}><h2>Popular<br />films</h2></div>
               {film.map( ( { title, name, poster_path, genre_ids, id } ) =>
               {
                 return (

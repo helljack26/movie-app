@@ -1,3 +1,12 @@
+.filmName{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+}
 .FilmListCard{
     border-radius: 15px;
     background-color: rgb(192, 192, 192);
@@ -6,31 +15,26 @@
 	overflow: hidden;
 	height: auto;
 	display: inline-block;
-	width: 100%;
-    margin-bottom: 20px;
+    width: 100%;
+    margin-top: 15px;
     position: relative;
 }
 .FilmListCard:hover{
-    filter: grayscale(1) contrast(1)  drop-shadow(0.4rem 0.4rem 2rem #1e3942);
+    color: rgb(238, 238, 238);
+    filter: grayscale(1) contrast(1)  drop-shadow(-0.3rem -0rem 0.8rem #1e3942);
 }
 
 img{
     width: 100%;
 }
-h3{
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: rgb(33, 33, 33);
-    margin-top: -5px;
-    margin-bottom: 10px;
-    text-decoration: none;
-    text-align: center;
-    text-transform: uppercase;
-}
+
 .genre{
     font-size: 1rem;
     pointer-events: none;
     cursor: default;
+}
+.genre p {
+    line-height:20px;
 }
 .filmDescription{
     padding: 10px 15px;
@@ -38,7 +42,7 @@ h3{
 }
 .addIcon{
     position: absolute;
-    top: 10px;
+    top: 25px;
     right: 10px;
     width: 45px;
     opacity: 0.8;

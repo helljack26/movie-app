@@ -15,9 +15,9 @@ const FilmListCard = ( { name, image, genre, id } ) =>
                     {/* Description block */}
                     <div className={style.filmDescription}>
                         {/* Film name */}
-                        <h3>{name}</h3>
+                        <p className={style.filmName}>{name}</p>
                         {/* Genres list */}
-                        <div className={style.genre} >Жанр: {genreArr}</div>
+                        <div className={style.genre} ><p>Genre: {genreArr}</p></div>
                     </div>
                 </Link>
                 <button type='button'><img src="./img/plus.svg" alt="add to watch list" className={style.addIcon} /></button>
