@@ -1,0 +1,60 @@
+.popularHeader{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-weight: bold;
+    padding: 20px 0px;
+    font-family: monospace;
+    margin: 0;
+    font-size: 3vw;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+a{
+    color: rgb(33, 33, 33);
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+a:hover {
+    color: #000;
+}
+
+main{
+    width: 95vw;
+    margin: 0px 30px;
+	column-count: 5;
+	column-gap: 15px;
+	row-gap: 15px;
+}
+
+@media screen and (max-width: 1200px) {
+    main{
+        column-count: 4;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    main{
+        column-count: 3;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    main{
+        column-count: 3;
+    }
+}
+@media screen and (max-width: 560px) {
+    main{
+        column-count: 2;
+    }
+}
+@media screen and (max-width: 400px) {
+    main{
+        column-count: 1;
+    }
+}

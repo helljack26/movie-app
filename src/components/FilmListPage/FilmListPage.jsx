@@ -1,57 +1,41 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+// Components
 import Header from '../Header';
-import FilmListCard from '../FilmListCard';
+import FilmList from '../FilmList';
 import LoadingPage from '../LoadingPage';
-import style from './FilmListPage.module.css'
+
+import { getPopularFilmList } from '../../store/filmApi/types';
 
 const FilmListPage = () =>
 {
-  const [film, setFilms] = useState( [] );
-  const [loading, setLoading] = useState( false );
+    const [loading, setLoading] = useState( false );
+    const dispatch = useDispatch()
 
-  useEffect( () =>
-  {
-    const requestFilm = async () =>
+    useEffect( () =>
     {
-      setLoading( true )
-      const response = await fetch(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=4d0c68776909a3f926088d7ddf14c097`,
-      );
-      const data = await response.json();
-      console.log( data );
-      setFilms( data.results );
-      setLoading( false );
-    };
+        const requestToApi = async () =>
+        {
+            setLoading( true )
+            await dispatch( getPopularFilmList() )
+            setLoading( false );
+        }
+        requestToApi()
 
-    requestFilm();
-  }, [] );
+    }, [dispatch] )
 
-  return (
-    <>
-      {loading ? (
-        <LoadingPage />
-      ) : (
-          <>
-            <Header active={'popular'} />
-            <main>
-              <div className={style.popularHeader}><h2>Popular<br />films</h2></div>
-              {film.map( ( { title, name, poster_path, genre_ids, id } ) =>
-              {
-                return (
-                  <FilmListCard
-                    key={id}
-                    id={id}
-                    name={title !== undefined ? title : name}
-                    image={poster_path}
-                    genre={genre_ids}
-                  />
-                );
-              } )}
-            </main>
-          </>
-        )}
-    </>
-  );
+    return (
+        <>
+            {loading ? (
+                <LoadingPage />
+            ) : (
+                    <>
+                        <Header active={'popular'} />
+                        <FilmList />
+                    </>
+                )}
+        </>
+    );
 };
 
 export default FilmListPage;
