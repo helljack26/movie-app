@@ -42,7 +42,6 @@ const Header = ( active ) =>
             <header className={style.header}>
                 <h1 className={style.logo}>Movie api</h1>
                 <Navbar active={active} />
-                {/* <QueryInput onChange={( value )=> setGender( value )} /> */}
             </header>
         </>
     )
