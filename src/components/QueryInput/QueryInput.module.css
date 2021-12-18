@@ -1,3 +1,8 @@
+.inputBlock{
+    display: flex;
+    align-items: center;
+}
+
 .input {
     background-color: transparent;
     color: white;
@@ -17,4 +22,16 @@ input:focus::placeholder {
 .input:focus{
     color: rgb(189, 189, 189);
     border-bottom: 1px solid rgb(0, 0, 0);
+}
+.searchBtn{
+    margin-left: 10px;
+    height: 35px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+.searchBtn > img{
+    width: 100%;
+    height: 100%;
+    filter: invert(75%);
 }

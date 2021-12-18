@@ -6,7 +6,8 @@ const FilmListCard = ( { name, image, genre, id } ) =>
 {
     // Translate api code genres to russian definition 
     const genreArr = translateGenre( genre );
-    return (
+    // If havent poster return nothing
+    return image !== null ? (
         <>
             <div className={style.cardBlock}>
                 <Link to={`/${id}`} className={style.FilmListCard}>
@@ -23,7 +24,7 @@ const FilmListCard = ( { name, image, genre, id } ) =>
                 <button type='button'><img src="./img/plus.svg" alt="add to watch list" className={style.addIcon} /></button>
             </div>
         </>
-    );
+    ) : null
 };
 
 export default FilmListCard;
