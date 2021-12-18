@@ -1,12 +1,9 @@
 // Translate api code genres to russian definition
 export function translateGenre( genre )
 {
-    const genreArr = genre.map( ( item, id ) => genre.length === 1 ?
-        // If only one item in array
-        <span key={id}>{translate( item )}</span> :
-        // If more than one item, includes ternary condition that add coma between each items and dot in the end
+    const genreArr = genre.map( ( item, id ) => genre.length >= 1 ?
         ( id < genre.length - 1 ? <span key={id}>{translate( item )}, </span> :
-            <span key={id}>{translate( item )}</span> )
+            <span key={id}>{translate( item )}</span> ) : null
     )
     function translate( genre )
     {

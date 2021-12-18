@@ -10,12 +10,10 @@ const Header = ( active ) =>
     // Add active button to navbar and input only on popular page
     function Navbar( { active } )
     {
-        if ( filmTitle === 'Finding films' )
-        {
-            active = ''
-        }
+        const activePage = filmTitle === 'Finding films' ? 'Finding films' : active.active
+
         const dispatch = useDispatch()
-        switch ( active.active )
+        switch ( activePage )
         {
             case 'popular':
                 return <>
@@ -36,6 +34,16 @@ const Header = ( active ) =>
                     </div>
                     <div className={style.emptyInput}>
                     </div>
+                </>
+            case 'Finding films':
+                return <>
+                    <div id='navbar' className={style.navbar}>
+                        <Link id='popular' to="/" className={style.popular}
+                            onClick={() => dispatch( getFilmListFromApi( true ) )
+                            }>Popular</Link>
+                        <Link id='watch' to="/watch-list" className={style.watch} >Watch list</Link>
+                    </div>
+                    <QueryInput />
                 </>
             default:
                 return <>
