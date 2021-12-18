@@ -7,7 +7,6 @@ const FilmList = () =>
     const filmList = useSelector( state => state.filmApi.filmList )
 
     return (
-
         <>
             <main>
                 <div className={style.popularHeader}>

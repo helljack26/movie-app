@@ -22,7 +22,8 @@ const QueryInput = () =>
       />
       <button type='button' className={style.searchBtn}
         onClick={( event ) => dispatch( getSearchList( event.target.value ) )}>
-        <img src="./img/search.svg" alt="search icon" /></button>
+        <img src="./img/search.svg" alt="search icon" />
+      </button>
     </div>
   );
 };

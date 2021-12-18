@@ -6,10 +6,14 @@ export const setPopularFilmList = ( payload ) =>
 {
     return { type: SET_FILM_LIST, payload }
 }
+
+
 export const updateSearchFilm = ( payload ) =>
 {
     return { type: UPDATE_SEARCH_FILM, payload }
 }
+
+
 // Initial render popular films
 export const getPopularFilmList = () => ( dispatch ) =>
 {
@@ -40,7 +44,6 @@ export const getSearchList = () => ( dispatch, getState ) =>
             } )
     } catch ( error )
     {
-        console.log( error );
         console.error( 'Ошибка:', error );
     }
 }

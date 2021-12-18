@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Header = ( active ) =>
 {
-    // Add active button to navbar
+    // Add active button to navbar and input only on popular page
     function Navbar( { active } )
     {
         switch ( active.active )
