@@ -1,6 +1,6 @@
 import style from './QueryInput.module.css';
 import { useDispatch } from 'react-redux';
-import { updateSearchFilm, getSearchList } from '../../store/filmApi/types';
+import { updateSearchFilm, getFilmListFromApi } from '../../store/filmApi/types';
 const QueryInput = () =>
 {
   const dispatch = useDispatch();
@@ -8,7 +8,7 @@ const QueryInput = () =>
   {
     if ( event.key === 'Enter' )
     {
-      dispatch( getSearchList( event.target.value ) )
+      dispatch( getFilmListFromApi() )
     }
   }
   return (
@@ -21,7 +21,7 @@ const QueryInput = () =>
         onInput={( event ) => dispatch( updateSearchFilm( event.target.value ) )}
       />
       <button type='button' className={style.searchBtn}
-        onClick={( event ) => dispatch( getSearchList( event.target.value ) )}>
+        onClick={() => dispatch( getFilmListFromApi() )}>
         <img src="./img/search.svg" alt="search icon" />
       </button>
     </div>

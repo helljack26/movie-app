@@ -1,29 +1,23 @@
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-// Components
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import Header from '../Header';
 import FilmList from '../FilmList';
 import LoadingPage from '../LoadingPage';
 
-import { getPopularFilmList } from '../../store/filmApi/types';
+import { getFilmListFromApi } from '../../store/filmApi/types';
 
 const FilmListPage = () =>
 {
-    const [loading, setLoading] = useState( false );
-    const dispatch = useDispatch()
+    const filmList = useSelector( state => state.filmApi.filmList )
 
+    const dispatch = useDispatch()
     useEffect( () =>
     {
-        const requestToApi = async () =>
-        {
-            setLoading( true )
-            await dispatch( getPopularFilmList() )
-            setLoading( false );
-        }
-        requestToApi()
-
+        dispatch( getFilmListFromApi() )
     }, [dispatch] )
 
+    const loading = useSelector( state => state.filmApi.loading )
     return (
         <>
             {loading ? (
@@ -31,7 +25,7 @@ const FilmListPage = () =>
             ) : (
                     <>
                         <Header active={'popular'} />
-                        <FilmList />
+                        <FilmList filmList={filmList} />
                     </>
                 )}
         </>

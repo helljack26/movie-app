@@ -10,7 +10,7 @@ const FilmListCard = ( { name, image, genre, id } ) =>
     return image !== null ? (
         <>
             <div className={style.cardBlock}>
-                <Link to={`/${id}`} className={style.FilmListCard}>
+                <Link to={`/${id}`} className={style.filmListCard}>
                     {/* Poster */}
                     <img src={`https://image.tmdb.org/t/p/w500/${image}`} alt={`Постер к фильму ${name}`} />
                     {/* Description block */}

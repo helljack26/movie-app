@@ -2,17 +2,22 @@ import style from './Header.module.css';
 import QueryInput from '../QueryInput';
 import { Link } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
+import { getFilmListFromApi } from '../../store/filmApi/types';
 const Header = ( active ) =>
 {
     // Add active button to navbar and input only on popular page
     function Navbar( { active } )
     {
+        const dispatch = useDispatch()
         switch ( active.active )
         {
             case 'popular':
                 return <>
                     <div id='navbar' className={style.navbar}>
-                        <Link id='popular' to="/" className={`${style.popular} ${style.active}`}>Popular</Link>
+                        <Link id='popular' to="/" className={`${style.popular} ${style.active}`
+                        } onClick={() => dispatch( getFilmListFromApi() )
+                        }>Popular</Link>
                         <Link id='watch' to="/watch-list" className={style.watch}>Watch list</Link>
                     </div>
                     <QueryInput />
@@ -20,7 +25,9 @@ const Header = ( active ) =>
             case 'watch':
                 return <>
                     <div id='navbar' className={style.navbar}>
-                        <Link id='popular' to="/" className={style.popular}>Popular</Link>
+                        <Link id='popular' to="/" className={style.popular}
+                            onClick={() => dispatch( getFilmListFromApi( true ) )
+                            }>Popular</Link>
                         <Link id='watch' to="/watch-list" className={`${style.watch} ${style.active}`}>Watch list</Link>
                     </div>
                     <div className={style.emptyInput}>
@@ -29,7 +36,9 @@ const Header = ( active ) =>
             default:
                 return <>
                     <div id='navbar' className={style.navbar}>
-                        <Link id='popular' to="/" className={style.popular}>Popular</Link>
+                        <Link id='popular' to="/" className={style.popular}
+                            onClick={() => dispatch( getFilmListFromApi( true ) )
+                            }>Popular</Link>
                         <Link id='watch' to="/watch-list" className={style.watch}>Watch list</Link>
                     </div>
                     <div className={style.emptyInput}>

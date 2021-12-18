@@ -1,13 +1,10 @@
-import { useSelector } from 'react-redux';
 import FilmListCard from '../FilmListCard';
 import style from './FilmList.module.css';
 
-const FilmList = () =>
+const FilmList = ( { filmList } ) =>
 {
-    const filmList = useSelector( state => state.filmApi.filmList )
-
     return (
-        <>
+        filmList ? <>
             <main>
                 <div className={style.popularHeader}>
                     <h2>Popular<br />films</h2>
@@ -19,7 +16,7 @@ const FilmList = () =>
                     );
                 } )}
             </main>
-        </>
+        </> : null
     )
 }
 
