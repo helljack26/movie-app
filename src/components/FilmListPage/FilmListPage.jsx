@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import Header from '../Header';
 import FilmList from '../FilmList';
 import LoadingPage from '../LoadingPage';
@@ -23,10 +22,8 @@ const FilmListPage = () =>
             {loading ? (
                 <LoadingPage />
             ) : (
-                    <>
-                        <Header active={'popular'} />
-                        <FilmList filmList={filmList} />
-                    </>
+                    <> <Header active={'popular'} />,
+                        <FilmList filmList={filmList} /></>
                 )}
         </>
     );

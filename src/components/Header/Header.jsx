@@ -1,14 +1,19 @@
 import style from './Header.module.css';
 import QueryInput from '../QueryInput';
 import { Link } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getFilmListFromApi } from '../../store/filmApi/types';
 const Header = ( active ) =>
 {
+    const filmTitle = useSelector( state => state.filmApi.filmPage )
     // Add active button to navbar and input only on popular page
     function Navbar( { active } )
     {
+        if ( filmTitle === 'Finding films' )
+        {
+            active = ''
+        }
         const dispatch = useDispatch()
         switch ( active.active )
         {
@@ -16,7 +21,6 @@ const Header = ( active ) =>
                 return <>
                     <div id='navbar' className={style.navbar}>
                         <Link id='popular' to="/" className={`${style.popular} ${style.active}`
-                        } onClick={() => dispatch( getFilmListFromApi() )
                         }>Popular</Link>
                         <Link id='watch' to="/watch-list" className={style.watch}>Watch list</Link>
                     </div>

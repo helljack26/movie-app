@@ -6,7 +6,7 @@ const QueryInput = () =>
   const dispatch = useDispatch();
   const handleKeyPress = ( event ) =>
   {
-    if ( event.key === 'Enter' )
+    if ( event.key === 'Enter' && event.target.value !== '' )
     {
       dispatch( getFilmListFromApi() )
     }
@@ -20,9 +20,10 @@ const QueryInput = () =>
         onKeyPress={( event ) => handleKeyPress( event )}
         onInput={( event ) => dispatch( updateSearchFilm( event.target.value ) )}
       />
-      <button type='button' className={style.searchBtn}
+      <button className={style.searchBtn}
         onClick={() => dispatch( getFilmListFromApi() )}>
         <img src="./img/search.svg" alt="search icon" />
+
       </button>
     </div>
   );

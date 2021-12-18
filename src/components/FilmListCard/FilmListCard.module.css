@@ -40,10 +40,14 @@ img{
     padding: 10px 15px;
     text-transform: capitalize;
 }
-.addIcon{
+.addIconBtn{
     position: absolute;
     top: 25px;
     right: 10px;
+    border: none;
+    background-color: transparent;
+}
+.addIcon{
     width: 45px;
     opacity: 0.8;
     z-index: 50;

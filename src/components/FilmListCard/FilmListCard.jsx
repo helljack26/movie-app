@@ -21,7 +21,7 @@ const FilmListCard = ( { name, image, genre, id } ) =>
                         <div className={style.genre} ><p>Genre: {genreArr}</p></div>
                     </div>
                 </Link>
-                <button type='button'><img src="./img/plus.svg" alt="add to watch list" className={style.addIcon} /></button>
+                <button type='button' className={style.addIconBtn}><img src="./img/plus.svg" alt="add to watch list" className={style.addIcon} /></button>
             </div>
         </>
     ) : null
