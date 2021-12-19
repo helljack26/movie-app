@@ -1,11 +1,12 @@
 .popularHeader{
+    width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     font-weight: bold;
-    padding: 20px 0px;
+    padding: 0px 0px;
     font-family: monospace;
-    margin: 0;
+    margin: 0 auto;
     font-size: 3vw;
     text-transform: uppercase;
     word-wrap: break-word;
@@ -27,7 +28,7 @@ main{
     width: 95vw;
     margin: 0px 30px;
 	column-count: 5;
-	column-gap: 15px;
+    column-gap: 15px;
 }
 
 @media screen and (max-width: 1200px) {

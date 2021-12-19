@@ -10,8 +10,7 @@ const Header = ( active ) =>
     // Add active button to navbar and input only on popular page
     function Navbar( { active } )
     {
-        const activePage = filmTitle === 'Finding films' ? 'Finding films' : active.active
-
+        const activePage = filmTitle.includes( 'Search results for' ) || filmTitle.includes( 'Nothing was found for' ) ? 'Finding films' : active.active
         const dispatch = useDispatch()
         switch ( activePage )
         {

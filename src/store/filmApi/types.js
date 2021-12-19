@@ -1,4 +1,3 @@
-// import FilmNotFound from '../../components/FilmNotFound';
 export const SET_FILM_LIST = 'SET_FILM_LIST';
 export const UPDATE_SEARCH_FILM = 'UPDATE_SEARCH_FILM';
 export const UPDATE_PAGE_TITLE = 'UPDATE_PAGE_TITLE';
@@ -25,6 +24,7 @@ export const getFilmListFromApi = ( reload = false ) => async ( dispatch, getSta
 {
     const state = getState();
     const searchFilm = state.filmApi.searchFilm;
+    const filmList = state.filmApi.filmList;
     if ( searchFilm !== '' )
     {
         dispatch( setLoading( true ) )
@@ -46,16 +46,19 @@ export const getFilmListFromApi = ( reload = false ) => async ( dispatch, getSta
     } else
     {
         url = urlArray.search
-        dispatch( updatePageTitle( 'Finding films' ) )
+        dispatch( updatePageTitle( `Search results for "${searchFilm}"` ) )
     }
     await fetch( url )
         .then( ( response ) => response.json() )
         .then( ( data ) =>
         {
-            return !data.errors ? dispatch( setFilmFromApi( data.results ) ) : data
+            console.log( data.results.length );
+            return ( !data.errors ? dispatch( setFilmFromApi( data.results ) ) : null,
+                data.results.length === 0 ?
+                    ( dispatch( updatePageTitle( `Nothing was found for "${searchFilm}"` ) ), dispatch( setFilmFromApi( filmList ) ) ) : null
+            )
         } )
     dispatch( updateSearchFilm( '' ) )
     setTimeout( () => dispatch( setLoading( false ) ), 800 )
-    console.log();
 }
 

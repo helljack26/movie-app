@@ -23,7 +23,6 @@ const QueryInput = () =>
       <button className={style.searchBtn}
         onClick={() => dispatch( getFilmListFromApi() )}>
         <img src="./img/search.svg" alt="search icon" />
-
       </button>
     </div>
   );

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import style from './FilmListCard.module.css';
 import { translateGenre } from '../Helpers/translateGenre.js';
 import { updatePageTitle } from '../../store/filmApi/types';
@@ -11,7 +11,7 @@ const FilmListCard = ( { name, image, genre, id } ) =>
     // If havent poster return nothing
     return image !== null ? (
         <>
-            <div className={style.cardBlock} onClick={() => dispatch( updatePageTitle( 'card' ) )}>
+            <div className={style.cardBlock}>
                 <Link to={`/${id}`} className={style.filmListCard}>
                     {/* Poster */}
                     <img src={`https://image.tmdb.org/t/p/w500/${image}`} alt={`Постер к фильму ${name}`} />
@@ -23,7 +23,11 @@ const FilmListCard = ( { name, image, genre, id } ) =>
                         <div className={style.genre} >{genreArr}</div>
                     </div>
                 </Link>
-                <button type='button' className={style.addIconBtn}><img src="./img/plus.svg" alt="add to watch list" className={style.addIcon} /></button>
+                <button type='button' className={style.addIconBtn}
+                onClick={() => dispatch( updatePageTitle( 'card' ) )}
+                >
+                    <img src="./img/plus.svg" alt="add to watch list" className={style.addIcon} />
+                    </button>
             </div>
         </>
     ) : null

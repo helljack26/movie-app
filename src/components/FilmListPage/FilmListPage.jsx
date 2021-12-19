@@ -22,8 +22,10 @@ const FilmListPage = () =>
             {loading ? (
                 <LoadingPage />
             ) : (
-                    <> <Header active={'popular'} />,
-                        <FilmList filmList={filmList} /></>
+                    <>
+                        <Header active={'popular'} />
+                        <FilmList filmList={filmList} />
+                    </>
                 )}
         </>
     );
