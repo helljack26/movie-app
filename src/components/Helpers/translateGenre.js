@@ -1,14 +1,11 @@
 // Translate api code genres to russian definition
-export function translateGenre( genre )
-{
-    const genreArr = genre.map( ( item, id ) => genre.length >= 1 ?
-        ( id < genre.length - 1 ? <span key={id}>{translate( item )}, </span> :
-            <span key={id}>{translate( item )}</span> ) : null
+export function translateGenre(genre) {
+    const genreArr = genre.map((item, id) => genre.length >= 1 ?
+        (id < genre.length - 1 ? <span key={id}>{translate(item)}, </span> :
+            <span key={id}>{translate(item)}</span>) : null
     )
-    function translate( genre )
-    {
-        switch ( genre )
-        {
+    function translate(genre) {
+        switch (genre) {
             case 28:
                 return 'Action';
             case 12:
@@ -67,6 +64,5 @@ export function translateGenre( genre )
                 return
         }
     }
-    // Return array with complete genres block
     return genreArr;
 }
