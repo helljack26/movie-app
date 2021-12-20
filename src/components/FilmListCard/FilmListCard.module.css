@@ -40,29 +40,7 @@ img{
     padding: 10px 15px;
     text-transform: capitalize;
 }
-.addIconBtn{
-    position: absolute;
-    top: 35px;
-    right: 10px;
-    border: none;
-    background-color: transparent;
-}
-.addIcon{
-    width: 45px;
-    height: 45px;
-    opacity: 0.55;
-    z-index: 50;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.addIcon:hover{
-    opacity: 1;
-    transform: scale(1.1);
 
-}
 
 .cardBlock{
     position: relative;

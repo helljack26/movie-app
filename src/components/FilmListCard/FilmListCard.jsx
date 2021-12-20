@@ -1,23 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import style from './FilmListCard.module.css';
+import AddToWatchListButton from './AddToWatchListButton';
 import { translateGenre } from '../Helpers/translateGenre.js';
-import { getFilmDetailsFromApi, addingToWatchList } from '../../store/filmApi/types';
+import { getFilmDetailsFromApi } from '../../store/filmApi/types';
 
 const FilmListCard = ({ name, image, genre, id }) => {
     const dispatch = useDispatch();
-
     const genreArr = genre.length !== 0 ? <p>Genre: {translateGenre(genre)}</p> : null;
-    const buttonArr = {
-        inWatch: {
-            url: './img/check-circle.svg',
-            class: 'inWatch'
-        },
-        notInWatch: {
-            url: './img/plus.svg',
-            class: 'notInWatch'
-        }
-    }
     return image !== null ? (
         <>
             <div className={style.cardBlock}>
@@ -29,10 +19,7 @@ const FilmListCard = ({ name, image, genre, id }) => {
                         <div className={style.genre} >{genreArr}</div>
                     </div>
                 </Link>
-                <button type='button' className={style.addIconBtn}
-                    onClick={() => dispatch(addingToWatchList(name, image, genre, id))}>
-                    <img src={buttonArr.notInWatch.url} alt="add to watch list" className={style.addIcon} />
-                </button>
+                <AddToWatchListButton name={name} image={image} genre={genre} id={id} />
             </div>
         </>
     ) : null
