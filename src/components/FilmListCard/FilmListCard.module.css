@@ -7,7 +7,7 @@
 	height: auto;
 	display: inline-block;
     width: 100%;
-    margin-top: 25px;
+    margin-top: 28px;
     position: relative;
 }
 .filmName{
@@ -49,14 +49,21 @@ img{
 }
 .addIcon{
     width: 45px;
-    opacity: 0.8;
+    height: 45px;
+    opacity: 0.55;
     z-index: 50;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .addIcon:hover{
     opacity: 1;
-    filter: invert(50%);
+    transform: scale(1.1);
+
 }
+
 .cardBlock{
     position: relative;
 }

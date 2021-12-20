@@ -7,22 +7,7 @@ h2 {
 }
 
 body {
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100vh;
   font-family: sans-serif;
-}
-
-body::-webkit-scrollbar {
-  width: 10px;
-}
-
-body::-webkit-scrollbar-track {
-  background: -webkit-gradient(linear, left top, left bottom, from(#1e3942), to(#929292));
-  background: linear-gradient(180deg,#042b38, #929292 );
-  /* background-color: #1e3942; */
-}
-
-body::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#929292), to(#1e3942));
-  background: linear-gradient(180deg, #929292, #042b38);
 }

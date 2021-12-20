@@ -2,6 +2,8 @@ export const SET_FILM_LIST = 'SET_FILM_LIST';
 export const UPDATE_PAGE_TITLE = 'UPDATE_PAGE_TITLE';
 export const UPDATE_SEARCH_FILM = 'UPDATE_SEARCH_FILM';
 export const SET_FILM_DETAILS = 'SET_FILM_DETAILS';
+export const ADD_TO_WATCH_LIST = 'ADD_TO_WATCH_LIST';
+export const DELETE_FROM_WATCH_LIST = 'DELETE_FROM_WATCH_LIST';
 export const SET_LOADING = ' SET_LOADING';
 
 export const setFilmFromApi = (payload) => {
@@ -16,6 +18,12 @@ export const updateSearchFilm = (payload) => {
 export const setFilmDetails = (payload) => {
     return { type: SET_FILM_DETAILS, payload }
 }
+export const addToWatchList = (payload) => {
+    return { type: ADD_TO_WATCH_LIST, payload }
+}
+export const removeFromWatchList = (payload) => {
+    return { type: DELETE_FROM_WATCH_LIST, payload }
+}
 export const setLoading = (payload) => {
     return { type: SET_LOADING, payload }
 }
@@ -24,7 +32,8 @@ export const getFilmListFromApi = (reload = false) => async (dispatch, getState)
     const state = getState();
     const searchFilm = state.filmApi.searchFilm;
     const filmList = state.filmApi.filmList;
-    // Spinner
+    const watchList = state.filmApi.watchList;
+    // Spinner on
     if (searchFilm !== '') {
         dispatch(setLoading(true))
     }
@@ -46,13 +55,53 @@ export const getFilmListFromApi = (reload = false) => async (dispatch, getState)
     await fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            return (!data.errors ? dispatch(setFilmFromApi(data.results)) : null,
-                data.results.length === 0 ? (dispatch(updatePageTitle(`Nothing was found for "${searchFilm}"`)), dispatch(setFilmFromApi(filmList))) : null
+            // !data.errors ? dispatch(setFilmFromApi(data.results)) : null,
+            const modifiedData = !data.errors ? checkInWatchList(data.results, watchList) : null;
+            return (dispatch(setFilmFromApi(modifiedData)),
+                modifiedData.length === 0 ? (dispatch(updatePageTitle(`Nothing was found for "${searchFilm}"`)),
+                    dispatch(setFilmFromApi(filmList)))
+                    : null
             )
         })
     dispatch(updateSearchFilm(''))
+    // Spinner off
     setTimeout(() => dispatch(setLoading(false)), 800)
 }
+
+export const checkInWatchList = (results, watchList) => {
+
+    // let modifiedData = results.map((item) => {
+    //     // const { title, name, poster_path, genre_ids, id } = item;
+    //     // const arr = JSON.parse(watchList);
+    //     // console.log(arr);
+    //     // const check = arr.map((item) => {
+    //     //     return console.log(item);
+    //     // })
+    //     // return console.log(title, name, poster_path, genre_ids, id);
+    //     return
+    // })
+
+    return results
+}
+export const addingToWatchList = (title, image, genre, id) => async (dispatch, getState) => {
+    const state = getState();
+    const watchList = state.filmApi.watchList;
+
+    const newInWatchItem = {
+        name: title,
+        poster_path: image,
+        genre_ids: genre,
+        id: id,
+        inWatch: true
+    }
+    watchList.push(newInWatchItem)
+    function getUniqueListBy(arr, key) {
+        return [...new Map(arr.map(item => [item[key], item])).values()]
+    }
+    const cleanWatchList = getUniqueListBy(watchList, 'id')
+    return dispatch(addToWatchList(cleanWatchList))
+}
+
 
 export const getFilmDetailsFromApi = (id) => async (dispatch) => {
     // Spinner

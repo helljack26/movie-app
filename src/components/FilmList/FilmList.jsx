@@ -12,11 +12,13 @@ const FilmList = ({ filmList }) => {
                 <h2>{filmTitle.includes('Nothing was found') ? (<span>{filmTitle}<br /><br />Previous results</span>) : filmTitle}</h2>
             </div>
             <main>
-                {filmList.map(({ title, name, poster_path, genre_ids, id }) => {
-                    return (
-                        <FilmListCard key={id} id={id} name={title !== undefined ? title : name} image={poster_path} genre={genre_ids} />
-                    );
-                })}
+                <div className={style.filmListBlock}>
+                    {filmList.map(({ title, name, poster_path, genre_ids, id }) => {
+                        return (
+                            <FilmListCard key={id} id={id} name={title !== undefined ? title : name} image={poster_path} genre={genre_ids} />
+                        );
+                    })}
+                </div>
             </main>
         </> : null
     )
