@@ -2,8 +2,7 @@ export const SET_FILM_LIST = 'SET_FILM_LIST';
 export const UPDATE_PAGE_TITLE = 'UPDATE_PAGE_TITLE';
 export const UPDATE_SEARCH_FILM = 'UPDATE_SEARCH_FILM';
 export const SET_FILM_DETAILS = 'SET_FILM_DETAILS';
-export const ADD_TO_WATCH_LIST = 'ADD_TO_WATCH_LIST';
-export const DELETE_FROM_WATCH_LIST = 'DELETE_FROM_WATCH_LIST';
+export const SET_WATCH_LIST = 'SET_WATCH_LIST';
 export const SET_LOADING = ' SET_LOADING';
 
 export const setFilmFromApi = (payload) => {
@@ -18,11 +17,8 @@ export const updateSearchFilm = (payload) => {
 export const setFilmDetails = (payload) => {
     return { type: SET_FILM_DETAILS, payload }
 }
-export const addToWatchList = (payload) => {
-    return { type: ADD_TO_WATCH_LIST, payload }
-}
-export const removeFromWatchList = (payload) => {
-    return { type: DELETE_FROM_WATCH_LIST, payload }
+export const setWatchList = (payload) => {
+    return { type: SET_WATCH_LIST, payload }
 }
 export const setLoading = (payload) => {
     return { type: SET_LOADING, payload }
@@ -69,6 +65,7 @@ export const getFilmListFromApi = (reload = false) => async (dispatch, getState)
 }
 
 export const checkInWatchList = (results, watchList) => {
+    // Here must firstly get localStorage, parse it to object and set in watchlist 
 
     // let modifiedData = results.map((item) => {
     //     // const { title, name, poster_path, genre_ids, id } = item;
@@ -83,25 +80,35 @@ export const checkInWatchList = (results, watchList) => {
 
     return results
 }
-export const addingToWatchList = (title, image, genre, id) => async (dispatch, getState) => {
+export const toWatchList = (title, image, genre, id) => async (dispatch, getState) => {
     const state = getState();
     const watchList = state.filmApi.watchList;
 
-    const newInWatchItem = {
-        name: title,
-        poster_path: image,
-        genre_ids: genre,
-        id: id,
-        inWatch: true
+    let actionType
+    if (title === undefined && image === undefined && genre === undefined) {
+        actionType = 'remove'
+    } else {
+        actionType = 'add'
+        const newInWatchItem = {
+            name: title,
+            poster_path: image,
+            genre_ids: genre,
+            id: id,
+            inWatch: true
+        }
+        watchList.push(newInWatchItem)
     }
-    watchList.push(newInWatchItem)
     function getUniqueListBy(arr, key) {
         return [...new Map(arr.map(item => [item[key], item])).values()]
     }
-    const cleanWatchList = getUniqueListBy(watchList, 'id')
-    return dispatch(addToWatchList(cleanWatchList))
+    function deleteUniqueFromList(arr, key) {
+        return arr.filter((item) => {
+            return item.id !== key;
+        });
+    }
+    const cleanWatchList = actionType !== 'add' ? deleteUniqueFromList(watchList, id) : getUniqueListBy(watchList, 'id');
+    return dispatch(setWatchList(cleanWatchList))
 }
-
 
 export const getFilmDetailsFromApi = (id) => async (dispatch) => {
     // Spinner
