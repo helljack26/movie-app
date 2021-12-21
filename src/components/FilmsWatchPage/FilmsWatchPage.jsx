@@ -18,7 +18,6 @@ const FilmsWatchPage = () => {
       <main>
         <div className={style.filmListBlock}>
           {watchList.map(({ name, poster_path, genre_ids, id, inWatch }) => {
-            console.log(inWatch);
             return (
               <FilmListCard key={id} id={id} name={name} image={poster_path} genre={genre_ids} buttonType={inWatch} />
             );
