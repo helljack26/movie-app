@@ -19,11 +19,4 @@
 .addIcon:hover{
     opacity: 1;
     transform: scale(1.1);
-
-}
-
-.tooltip{
-    position: absolute;
-    top: 10px;
-    right: 105px;
 }

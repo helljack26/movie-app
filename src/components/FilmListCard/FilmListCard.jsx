@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import style from './FilmListCard.module.css';
-import AddToWatchListButton from './AddToWatchListButton';
 import { translateGenre } from '../Helpers/translateGenre.js';
 import { getFilmDetailsFromApi } from '../../store/filmApi/types';
+import style from './FilmListCard.module.css';
+import AddToWatchListButton from './AddToWatchListButton';
 
-const FilmListCard = ({ name, image, genre, id }) => {
+const FilmListCard = ({ name, image, genre, id, buttonType }) => {
     const dispatch = useDispatch();
     const genreArr = genre.length !== 0 ? <p>Genre: {translateGenre(genre)}</p> : null;
     return image !== null ? (
@@ -19,7 +19,7 @@ const FilmListCard = ({ name, image, genre, id }) => {
                         <div className={style.genre} >{genreArr}</div>
                     </div>
                 </Link>
-                <AddToWatchListButton name={name} image={image} genre={genre} id={id} />
+                <AddToWatchListButton name={name} image={image} genre={genre} id={id} buttonType={buttonType} />
             </div>
         </>
     ) : null
