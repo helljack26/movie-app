@@ -3,10 +3,11 @@ import { useDispatch } from 'react-redux';
 import { translateGenre } from '../Helpers/translateGenre.js';
 import { getFilmDetailsFromApi } from '../../store/filmApi/types';
 import style from './FilmListCard.module.css';
-import AddToWatchListButton from './AddToWatchListButton';
+import AddToWatchListButton from '../AddToWatchListButton';
 
 const FilmListCard = ({ name, image, genre, id, buttonType }) => {
     const dispatch = useDispatch();
+    console.log(genre);
     const genreArr = genre.length !== 0 ? <p>Genre: {translateGenre(genre)}</p> : null;
     return image !== null ? (
         <>
