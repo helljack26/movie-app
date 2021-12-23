@@ -15,7 +15,7 @@ const FilmDetailsPage = () => {
     const localStorageWatchList = window.localStorage.getItem('watchList')
     const localStorageWatchListJson = JSON.parse(localStorageWatchList);
     function checkInLocalStorage(id) {
-        const filmFromLocalStorage = localStorageWatchListJson.find(film => film.id === id)
+        const filmFromLocalStorage = localStorageWatchListJson !== null ? localStorageWatchListJson.find(film => film.id === id): false
         const buttonType = Boolean(filmFromLocalStorage) === true ? 'detailsInWatch' : 'detailsNotInWatch'
         return buttonType
     }

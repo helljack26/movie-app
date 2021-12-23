@@ -75,7 +75,7 @@ export const checkInWatchList = (results, dispatch) => {
         }
         return modifiedDataItem
     })
-    // localStorage.clear()
+
     let checkType
     const localStorageWatchList = window.localStorage.getItem('watchList')
     const localStorageWatchListJson = JSON.parse(localStorageWatchList)
