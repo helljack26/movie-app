@@ -22,12 +22,9 @@ const buttonTypeArr = {
     }
 }
 
-const AddToWatchListButton = ({ name, image, genre, id, buttonType = undefined }) => {
+const AddToWatchListButton = ({ name, image, genre, id, buttonType }) => {
     const dispatch = useDispatch();
     let [type, setType] = useState();
-
-    // console.log(buttonType);
-    // console.log(type);
     switch (type === undefined ? buttonType : type) {
         case 'inWatch':
         case true:
@@ -41,21 +38,10 @@ const AddToWatchListButton = ({ name, image, genre, id, buttonType = undefined }
                         />
                     </button>
                 </>)
-        case 'notInWatch':
-        case false:
-            return <>
-                <button type='button' className={style.addIconBtn}>
-                    <img src={buttonTypeArr.notInWatch.url} alt="add to watch list" className={style.addIcon} onClick={() => {
-                        dispatch(toWatchList(name, image, genre, id))
-                        setType('inWatch')
-                    }}
-                    />
-                </button>
-            </>
         case 'detailsInWatch':
             return (
                 <>
-                    <button type='button' className={style.detailAddIconBtn} onClick={() => {
+                    <button type='button' className={`${style.detailsBtn} ${style.detailsInWatch}`} onClick={() => {
                         dispatch(toWatchList(undefined, undefined, undefined, id))
                         setType('detailsNotInWatch')
                     }}>
@@ -64,18 +50,17 @@ const AddToWatchListButton = ({ name, image, genre, id, buttonType = undefined }
                 </>)
         case 'detailsNotInWatch':
             return (<>
-                <button type='button' className={style.detailAddIconBtn} onClick={() => {
+                <button type='button' className={`${style.detailsBtn} ${style.detailsNotInWatch}`} onClick={() => {
                     dispatch(toWatchList(name, image, genre, id))
                     setType('detailsInWatch')
                 }}>
                     {buttonTypeArr.detailsNotInWatch.text}
                 </button>
             </>)
-
         default:
             return <>
                 <button type='button' className={style.addIconBtn}>
-                    <img src={buttonTypeArr.notInWatch.url} alt="add to watch list" className={style.addIcon} onClick={() => {
+                    <img src={buttonTypeArr.notInWatch.url} alt="add to watch list" className={`${style.addIcon} ${style.notInWatch}`} onClick={() => {
                         dispatch(toWatchList(name, image, genre, id))
                         setType('inWatch')
                     }}

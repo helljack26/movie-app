@@ -2,13 +2,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import Header from '../Header';
 import FilmListCard from '../FilmListCard';
 import style from '../FilmList/FilmList.module.css'
-import { updatePageTitle } from '../../store/filmApi/types';
+import { updatePageTitle, setWatchList } from '../../store/filmApi/types';
 
 const FilmsWatchPage = () => {
   const dispatch = useDispatch();
   const filmTitle = useSelector(state => state.filmApi.filmPageTitle)
   const watchList = useSelector(state => state.filmApi.watchList)
   dispatch(updatePageTitle('Watch List'))
+
+  if (watchList.length === 0) {
+    const localStorageWatchList = window.localStorage.getItem('watchList')
+    const localStorageWatchListJson = JSON.parse(localStorageWatchList)
+    dispatch(setWatchList(localStorageWatchListJson))
+  }
   return (
     watchList.length !== 0 ? <>
       <Header active={'watch'} />

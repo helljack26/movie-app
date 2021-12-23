@@ -20,6 +20,23 @@
     opacity: 1;
     transform: scale(1.1);
 }
-/* .detailAddIconBtn{
-    
-} */
+.detailsBtn{
+    cursor: pointer;
+    background-color: #1e3942;
+    border: 1px solid white;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 10px;
+    color: white;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}   
+.detailsNotInWatch:hover{
+    color: rgb(10, 181, 10);
+    background-color: #102d37;
+}
+.detailsInWatch:hover{
+    color: rgb(177, 22, 11);
+    background-color: #102d37;
+}

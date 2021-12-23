@@ -12,12 +12,17 @@ import AddToWatchListButton from '../AddToWatchListButton';
 const FilmDetailsPage = () => {
     const filmDetails = useSelector(state => state.filmApi.filmDetails)
     const loading = useSelector(state => state.filmApi.loading)
-    // const idGenreArr = filmDetails.genres.map((item)=> item.id.)
-    // console.log();
+    const localStorageWatchList = window.localStorage.getItem('watchList')
+    const localStorageWatchListJson = JSON.parse(localStorageWatchList);
+    function checkInLocalStorage(id) {
+        const filmFromLocalStorage = localStorageWatchListJson.find(film => film.id === id)
+        const buttonType = Boolean(filmFromLocalStorage) === true ? 'detailsInWatch' : 'detailsNotInWatch'
+        return buttonType
+    }
+    // For render page 
     const genreArr = filmDetails.genres !== undefined ? translateGenre(filmDetails.genres.map((item) => item.id)) : null
-    const genreForState = filmDetails.genres.map((item) => item.id)
-
-    // console.log(genreForState);
+    // For button add to state
+    const genreForState = filmDetails.genres !== undefined ? filmDetails.genres.map((item) => item.id) : null
     return (
         <>
             {loading ? (
@@ -37,7 +42,7 @@ const FilmDetailsPage = () => {
                         <FilmDetailsSubscription property='Production' value={filmDetails.production_companies.map((item) => `"${item.name}" `)} />
                         <FilmDetailsSubscription property='Runtime' value={`${filmDetails.runtime} minutes`} />
                         <FilmDetailsSubscription property='Review' value={filmDetails.overview} />
-                        <AddToWatchListButton name={filmDetails.title} image={filmDetails.poster_path} genre={genreForState} id={filmDetails.id} buttonType={'detailsNotInWatch'} />
+                        <AddToWatchListButton name={filmDetails.title} image={filmDetails.poster_path} genre={genreForState} id={filmDetails.id} buttonType={checkInLocalStorage(filmDetails.id)} />
                     </div>
                 </div>
             </>)}

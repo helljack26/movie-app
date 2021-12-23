@@ -13,9 +13,9 @@ const FilmList = ({ filmList }) => {
             </div>
             <main>
                 <div className={style.filmListBlock}>
-                    {filmList.map(({ title, name, poster_path, genre_ids, id }) => {
+                    {filmList.map(({ name, poster_path, genre_ids, id, inWatch }) => {
                         return (
-                            <FilmListCard key={id} id={id} name={title !== undefined ? title : name} image={poster_path} genre={genre_ids} buttonType={false} />
+                            <FilmListCard key={id} id={id} name={name} image={poster_path} genre={genre_ids} buttonType={inWatch} />
                         );
                     })}
                 </div>

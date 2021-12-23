@@ -28,7 +28,6 @@ export const getFilmListFromApi = (reload = false) => async (dispatch, getState)
     const state = getState();
     const searchFilm = state.filmApi.searchFilm;
     const filmList = state.filmApi.filmList;
-    const watchList = state.filmApi.watchList;
     // Spinner on
     if (searchFilm !== '') {
         dispatch(setLoading(true))
@@ -51,7 +50,7 @@ export const getFilmListFromApi = (reload = false) => async (dispatch, getState)
     await fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            const modifiedData = !data.errors ? checkInWatchList(data.results, watchList) : null;
+            const modifiedData = !data.errors ? checkInWatchList(data.results, dispatch) : null;
             return (dispatch(setFilmFromApi(modifiedData)),
                 modifiedData.length === 0 ? (dispatch(updatePageTitle(`Nothing was found for "${searchFilm}"`)),
                     dispatch(setFilmFromApi(filmList)))
@@ -63,29 +62,43 @@ export const getFilmListFromApi = (reload = false) => async (dispatch, getState)
     setTimeout(() => dispatch(setLoading(false)), 800)
 }
 
-export const checkInWatchList = (results, watchList) => {
-    // Here must firstly get localStorage, parse it to object and set in watchlist 
-    const localStorageArray = window.localStorage
-    if (localStorageArray.getItem('watchList') === null) {
-        localStorageArray.setItem('watchList', [])
-    }
-    const watchListLocalStorage = localStorageArray.getItem('watchList')
-    const watchListLocalStorageJson = JSON.parse(watchListLocalStorage)
-    // switch()
-    console.log(watchListLocalStorageJson);
-    // window.addEventListener('beforeunload', JSON.stringify(watchList));
-    // let modifiedData = results.map((item) => {
-    //     // const { title, name, poster_path, genre_ids, id } = item;
-    //     // const arr = JSON.parse(watchList);
-    //     // console.log(arr);
-    //     // const check = arr.map((item) => {
-    //     //     return console.log(item);
-    //     // })
-    //     // return console.log(title, name, poster_path, genre_ids, id);
-    //     return
-    // })
+export const checkInWatchList = (results, dispatch) => {
+    // Save necessary film fields
+    const modifiedData = results.map((item) => {
+        const { title, name, poster_path, genre_ids, id } = item;
+        const modifiedDataItem = {
+            name: !title ? name : title,
+            poster_path: poster_path,
+            genre_ids: genre_ids,
+            id: id,
+            inWatch: false
+        }
+        return modifiedDataItem
+    })
+    // localStorage.clear()
+    let checkType
+    const localStorageWatchList = window.localStorage.getItem('watchList')
+    const localStorageWatchListJson = JSON.parse(localStorageWatchList)
+    localStorageWatchList === null ? checkType = 'initial' : checkType = 'compare with localStorage'
 
-    return results
+    function checkInLocalStorage(item) {
+        const filmFromLocalStorage = localStorageWatchListJson.find(film => film.id === item.id)
+        return Boolean(filmFromLocalStorage) === true ? filmFromLocalStorage : item;
+    }
+    switch (checkType) {
+        case 'initial':
+            return modifiedData
+        case 'compare with localStorage':
+            dispatch(setWatchList(localStorageWatchListJson))
+            return modifiedData.map((item) => {
+                return checkInLocalStorage(item)
+            })
+
+        default:
+            return modifiedData
+    }
+
+
 }
 export const toWatchList = (title, image, genre, id) => async (dispatch, getState) => {
     const state = getState();
@@ -114,6 +127,7 @@ export const toWatchList = (title, image, genre, id) => async (dispatch, getStat
         });
     }
     const cleanWatchList = actionType !== 'add' ? deleteUniqueFromList(watchList, id) : getUniqueListBy(watchList, 'id');
+    localStorage.setItem('watchList', JSON.stringify(cleanWatchList))
     return dispatch(setWatchList(cleanWatchList))
 }
 

@@ -3,16 +3,13 @@ import QueryInput from '../QueryInput';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilmListFromApi } from '../../store/filmApi/types';
-const Header = ( active ) =>
-{
-    const filmTitle = useSelector( state => state.filmApi.filmPageTitle )
+const Header = (active) => {
+    const filmTitle = useSelector(state => state.filmApi.filmPageTitle)
     // Add active button to navbar and input only on popular page
-    function Navbar( { active } )
-    {
-        const activePage = filmTitle.includes( 'Search results for' ) || filmTitle.includes( 'Nothing was found for' ) ? 'Finding films' : active.active
+    function Navbar({ active }) {
+        const activePage = filmTitle.includes('Search results for') || filmTitle.includes('Nothing was found for') ? 'Finding films' : active.active
         const dispatch = useDispatch()
-        switch ( activePage )
-        {
+        switch (activePage) {
             case 'popular':
                 return <>
                     <div id='navbar' className={style.navbar}>
@@ -26,7 +23,7 @@ const Header = ( active ) =>
                 return <>
                     <div id='navbar' className={style.navbar}>
                         <Link id='popular' to="/" className={style.popular}
-                            onClick={() => dispatch( getFilmListFromApi( true ) )
+                            onClick={() => dispatch(getFilmListFromApi(true))
                             }>Popular</Link>
                         <Link id='watch' to="/watch-list" className={`${style.watch} ${style.active}`}>Watch list</Link>
                     </div>
@@ -37,7 +34,7 @@ const Header = ( active ) =>
                 return <>
                     <div id='navbar' className={style.navbar}>
                         <Link id='popular' to="/" className={style.popular}
-                            onClick={() => dispatch( getFilmListFromApi( true ) )
+                            onClick={() => dispatch(getFilmListFromApi(true))
                             }>Popular</Link>
                         <Link id='watch' to="/watch-list" className={style.watch} >Watch list</Link>
                     </div>
@@ -47,7 +44,7 @@ const Header = ( active ) =>
                 return <>
                     <div id='navbar' className={style.navbar}>
                         <Link id='popular' to="/" className={style.popular}
-                            onClick={() => dispatch( getFilmListFromApi( true ) )
+                            onClick={() => dispatch(getFilmListFromApi(true))
                             }>Popular</Link>
                         <Link id='watch' to="/watch-list" className={style.watch}>Watch list</Link>
                     </div>
