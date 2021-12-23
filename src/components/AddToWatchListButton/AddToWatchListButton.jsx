@@ -31,11 +31,14 @@ const AddToWatchListButton = ({ name, image, genre, id, buttonType }) => {
             return (
                 <>
                     <button type='button' className={style.addIconBtn}>
-                        <img src={buttonTypeArr.inWatch.url} alt="add to watch list" className={style.addIcon} onClick={() => {
-                            dispatch(toWatchList(undefined, undefined, undefined, id))
-                            setType('notInWatch')
-                        }}
-                        />
+                        <img src={buttonTypeArr.inWatch.url} alt="add to watch list" className={style.inWatch}
+                            onClick={() => {
+                                dispatch(toWatchList(undefined, undefined, undefined, id))
+                                setType('notInWatch')
+                            }} />
+                        <div className={style.tooltip}>
+                            <p>Remove from Watch list</p>
+                        </div>
                     </button>
                 </>)
         case 'detailsInWatch':
@@ -65,6 +68,9 @@ const AddToWatchListButton = ({ name, image, genre, id, buttonType }) => {
                         setType('inWatch')
                     }}
                     />
+                    <div className={style.tooltip}>
+                        <p>Add to Watch list</p>
+                    </div>
                 </button>
             </>
     }

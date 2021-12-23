@@ -59,7 +59,7 @@ export const getFilmListFromApi = (reload = false) => async (dispatch, getState)
         })
     dispatch(updateSearchFilm(''))
     // Spinner off
-    setTimeout(() => dispatch(setLoading(false)), 800)
+    setTimeout(() => dispatch(setLoading(false)), 700)
 }
 
 export const checkInWatchList = (results, dispatch) => {
@@ -75,7 +75,6 @@ export const checkInWatchList = (results, dispatch) => {
         }
         return modifiedDataItem
     })
-
     let checkType
     const localStorageWatchList = window.localStorage.getItem('watchList')
     const localStorageWatchListJson = JSON.parse(localStorageWatchList)
@@ -93,7 +92,6 @@ export const checkInWatchList = (results, dispatch) => {
             return modifiedData.map((item) => {
                 return checkInLocalStorage(item)
             })
-
         default:
             return modifiedData
     }

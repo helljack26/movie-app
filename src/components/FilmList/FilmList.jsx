@@ -2,10 +2,8 @@ import { useSelector } from 'react-redux';
 import FilmListCard from '../FilmListCard';
 import style from './FilmList.module.css';
 
-
 const FilmList = ({ filmList }) => {
     const filmTitle = useSelector(state => state.filmApi.filmPageTitle)
-
     return (
         filmList ? <>
             <div className={style.popularHeader}>

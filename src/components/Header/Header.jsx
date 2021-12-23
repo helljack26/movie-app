@@ -1,73 +1,7 @@
 import style from './Header.module.css';
-import QueryInput from '../QueryInput';
-import { Link } from 'react-router-dom';
-import { useState,useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getFilmListFromApi } from '../../store/filmApi/types';
+import Navbar from '../Navbar';
+
 const Header = (active) => {
-    const filmTitle = useSelector(state => state.filmApi.filmPageTitle)
-
-    // Add active button to navbar and input only on popular page
-    function Navbar({ active }) {
-        const activePage = filmTitle.includes('Search results for') || filmTitle.includes('Nothing was found for') ? 'Finding films' : active.active
-        const dispatch = useDispatch()
-        const defaultNavbar =   <>
-        <div id='navbar' className={style.navbar}>
-            <Link id='popular' to="/" className={style.popular}
-                onClick={() => dispatch(getFilmListFromApi(true))
-                }>Popular</Link>
-            <Link id='watch' to="/watch-list" className={style.watch}>Watch list</Link>
-        </div>
-        <div className={style.emptyInput}>
-        </div>
-    </>
-
-        const [navbar, setNavbar] = useState(defaultNavbar);
-
-        useEffect (()=>{
-            switch (activePage) {
-                case 'popular':
-                    return setNavbar(<>
-                        <div id='navbar' className={style.navbar}>
-                            <Link id='popular' to="/" className={`${style.popular} ${style.active}`
-                            }>Popular</Link>
-                            <Link id='watch' to="/watch-list" className={style.watch}>Watch list</Link>
-                        </div>
-                        <QueryInput />
-                    </>)
-                case 'watch':
-                    return setNavbar(
-                        <>
-                        <div id='navbar' className={style.navbar}>
-                            <Link id='popular' to="/" className={style.popular}
-                                onClick={() => dispatch(getFilmListFromApi(true))
-                                }>Popular</Link>
-                            <Link id='watch' to="/watch-list" className={`${style.watch} ${style.active}`}>Watch list</Link>
-                        </div>
-                        <div className={style.emptyInput}>
-                        </div>
-                    </>
-                    ) 
-                case 'Finding films':
-                    return setNavbar(
-                        <>
-                        <div id='navbar' className={style.navbar}>
-                            <Link id='popular' to="/" className={style.popular}
-                                onClick={() => dispatch(getFilmListFromApi(true))
-                                }>Popular</Link>
-                            <Link id='watch' to="/watch-list" className={style.watch} >Watch list</Link>
-                        </div>
-                        <QueryInput />
-                    </>
-                    )
-                default:
-                    return navbar
-            }
-
-        },[])
-        return navbar
-         
-    }
     return (
         <>
             <header className={style.header}>
