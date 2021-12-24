@@ -10,7 +10,7 @@
     font-family: monospace;
     margin: 0 auto;
     margin-top: 18px;
-    font-size: 1.8vw;
+    font-size: 1.8rem;
     text-transform: uppercase;
     word-wrap: break-word;
     white-space: pre-wrap;
@@ -74,7 +74,10 @@ main::-webkit-scrollbar-thumb {
 
 @media screen and (max-width: 700px) {
     .filmListBlock {
-        column-count: 3;
+        column-count: 2;
+    }
+    .popularHeader{
+        font-size: 6vw;
     }
 }
 
@@ -88,4 +91,5 @@ main::-webkit-scrollbar-thumb {
     .filmListBlock {
         column-count: 1;
     }
+
 }

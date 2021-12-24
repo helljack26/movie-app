@@ -31,26 +31,10 @@
     cursor: default;
 }
 
-.navbarLink{
-    color: whitesmoke;
-    font-size: 1.5rem;
-    padding: 15px 20px;
-}
-.navbarLink:hover{
-    color: whitesmoke;
-    background-color: #102d37;
-}
-.active {
-    color: rgb(199, 199, 199);
-    background-color: #031b22;
-    height: 100%;
-    padding: 15px 20px;
-}
-.active:hover {
-color: rgb(199, 199, 199);
-background-color: #031b22;
-cursor: default;
-}
-.emptyInput{
-    width:26vw;
+@media screen and (max-width: 1000px) {
+    .header{
+        
+        height: fit-content;
+        flex-direction: column;
+    }
 }

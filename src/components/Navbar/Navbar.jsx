@@ -1,5 +1,5 @@
 import QueryInput from '../QueryInput';
-import style from '../Header/Header.module.css';
+import style from './Navbar.module.css';
 import { Link } from 'react-router-dom';
 import { getFilmListFromApi } from '../../store/filmApi/types';
 import { useSelector, useDispatch } from 'react-redux';
