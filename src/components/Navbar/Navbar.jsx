@@ -18,7 +18,6 @@ const Navbar = ({ active }) => {
                     </div>
                     <QueryInput />
                 </div>
-
             </>)
         case 'watch':
             return (
@@ -44,7 +43,6 @@ const Navbar = ({ active }) => {
                         </div>
                         <QueryInput />
                     </div>
-
                 </>
             )
         default:
@@ -58,10 +56,8 @@ const Navbar = ({ active }) => {
                     <div className={style.emptyInput}>
                     </div>
                 </div>
-
             </>
     }
 }
-
 
 export default Navbar

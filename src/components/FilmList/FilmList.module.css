@@ -43,7 +43,6 @@ main::-webkit-scrollbar-track {
     background: -webkit-gradient(linear, left top, left bottom, from(#1e3942), to(#929292));
     background: linear-gradient(180deg, #042b38, #929292);
     border-radius: 5px;
-    /* background-color: #1e3942; */
 }
 
 main::-webkit-scrollbar-thumb {

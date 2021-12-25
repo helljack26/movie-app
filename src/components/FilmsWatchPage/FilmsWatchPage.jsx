@@ -9,13 +9,11 @@ const FilmsWatchPage = () => {
   const watchList = useSelector(state => state.filmApi.watchList)
   useEffect(() => {
     dispatch(updatePageTitle('Watch List'))
-  }, [dispatch])
-
-  if (watchList.length === 0 && window.localStorage.getItem('watchList') === []) {
     const localStorageWatchList = window.localStorage.getItem('watchList')
     const localStorageWatchListJson = JSON.parse(localStorageWatchList)
     dispatch(setWatchList(localStorageWatchListJson))
-  }
+  }, [dispatch])
+
   return (
     <>
       <Header active={'watch'} />

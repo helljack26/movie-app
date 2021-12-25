@@ -19,12 +19,12 @@ const buttonTypeArr = {
     },
     detailsInWatch: {
         type: 'detailsInWatch',
-        text: 'Delete from watch list',
+        text: <span>Delete from <br /> watch list</span>,
         class: 'detailsInWatch'
     },
     detailsNotInWatch: {
         type: 'detailsNotInWatch',
-        text: 'Add to watch list',
+        text: <span>Add to<br /> watch list</span>,
         class: 'notInWatch'
     }
 }
@@ -59,7 +59,7 @@ const AddToWatchListButton = ({ name, image, genre, id, buttonType }) => {
                             dispatch(toWatchList(undefined, undefined, undefined, id))
                             setType(buttonTypeArr.detailsNotInWatch.type)
                         }}>
-                        <span> {buttonTypeArr.detailsInWatch.text}</span>
+                        {buttonTypeArr.detailsInWatch.text}
                     </button>
                 </>)
         case 'detailsNotInWatch':

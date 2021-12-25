@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     margin-left: 5vw;
     width: 60%;
     height: 100%;
@@ -6,17 +6,20 @@
     justify-content: flex-end;
     align-items: center;
 }
-a{
+
+a {
     padding: 0;
     margin: 0;
 }
-.navbarBlock{
+
+.navbarBlock {
     display: flex;
     width: 100%;
     height: 100%;
     margin-left: -15%;
 }
-.navbarLink{
+
+.navbarLink {
     color: whitesmoke;
     font-size: 1.5rem;
     display: flex;
@@ -24,67 +27,80 @@ a{
     padding: 0px 30px;
     height: 100%;
 }
-.navbarLink:hover{
+
+.navbarLink:hover {
     color: whitesmoke;
     background-color: #102d37;
 }
+
 .active {
     color: rgb(199, 199, 199);
     background-color: #031b22;
     height: 100%;
 }
+
 .active:hover {
-color: rgb(199, 199, 199);
-background-color: #031b22;
-cursor: default;
+    color: rgb(199, 199, 199);
+    background-color: #031b22;
+    cursor: default;
 }
-.emptyInput{
-    width:26vw;
+
+.emptyInput {
+    width: 26vw;
 }
+
 @media screen and (max-width: 1000px) {
-.navbar{
-    width: 100%;
-    height: 50px;
-    justify-content: space-between;
-    margin-left: 0;
-}
-.navbarBlock{
-    margin-left: 0;
-}
-}
-@media screen and (max-width: 750px) {
-    .navbar{
-        height: 40px;
-     
+    .navbar {
+        width: 100%;
+        height: 50px;
+        justify-content: space-between;
+        margin-left: 0;
     }
-    .navbarLink{
+
+    .navbarBlock {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .navbar {
+        height: 40px;
+
+    }
+
+    .navbarLink {
         font-size: 1.2rem;
     }
 }
+
 @media screen and (max-width: 600px) {
-    .navbar{
-     flex-direction: column;
-     align-items: center;
-     height: fit-content;
-     padding-bottom: 5px;
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        height: fit-content;
+        padding-bottom: 5px;
     }
-    .navbarBlock{
+
+    .navbarBlock {
         margin-left: 0;
         height: 40px;
         justify-content: center;
         margin-bottom: 5px;
     }
-    .navbarLink{
+
+    .navbarLink {
         font-size: 1.5rem;
     }
 }
+
 @media screen and (max-width: 385px) {
-    .navbarBlock{
+    .navbarBlock {
         flex-direction: column;
         align-items: center;
         height: fit-content;
     }
-    .navbarLink{
+
+    .navbarLink {
         padding: 10px 40px;
         font-size: 2rem;
     }

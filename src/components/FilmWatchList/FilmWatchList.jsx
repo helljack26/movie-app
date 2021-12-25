@@ -4,7 +4,6 @@ import style from '../FilmList/FilmList.module.css'
 
 const FilmWatchList = ({ watchList }) => {
     const filmTitle = useSelector(state => state.filmApi.filmPageTitle)
-    console.log(watchList.length);
     switch (watchList.length) {
         case 0:
             return (
