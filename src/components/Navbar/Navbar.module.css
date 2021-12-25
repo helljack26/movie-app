@@ -1,7 +1,28 @@
+.navbar{
+    margin-left: 5vw;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+a{
+    padding: 0;
+    margin: 0;
+}
+.navbarBlock{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin-left: -15%;
+}
 .navbarLink{
     color: whitesmoke;
     font-size: 1.5rem;
-    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    padding: 0px 30px;
+    height: 100%;
 }
 .navbarLink:hover{
     color: whitesmoke;
@@ -11,7 +32,6 @@
     color: rgb(199, 199, 199);
     background-color: #031b22;
     height: 100%;
-    padding: 15px 20px;
 }
 .active:hover {
 color: rgb(199, 199, 199);
@@ -20,4 +40,52 @@ cursor: default;
 }
 .emptyInput{
     width:26vw;
+}
+@media screen and (max-width: 1000px) {
+.navbar{
+    width: 100%;
+    height: 50px;
+    justify-content: space-between;
+    margin-left: 0;
+}
+.navbarBlock{
+    margin-left: 0;
+}
+}
+@media screen and (max-width: 750px) {
+    .navbar{
+        height: 40px;
+     
+    }
+    .navbarLink{
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 600px) {
+    .navbar{
+     flex-direction: column;
+     align-items: center;
+     height: fit-content;
+     padding-bottom: 5px;
+    }
+    .navbarBlock{
+        margin-left: 0;
+        height: 40px;
+        justify-content: center;
+        margin-bottom: 5px;
+    }
+    .navbarLink{
+        font-size: 1.5rem;
+    }
+}
+@media screen and (max-width: 385px) {
+    .navbarBlock{
+        flex-direction: column;
+        align-items: center;
+        height: fit-content;
+    }
+    .navbarLink{
+        padding: 10px 40px;
+        font-size: 2rem;
+    }
 }

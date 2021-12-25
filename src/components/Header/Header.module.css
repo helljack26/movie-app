@@ -1,6 +1,7 @@
 .header {
     width: 100vw;
     height: 9vh;
+    min-height: 45px;
     display: flex;
     background-color: #1e3942;
     color: white;
@@ -33,8 +34,18 @@
 
 @media screen and (max-width: 1000px) {
     .header{
-        
         height: fit-content;
         flex-direction: column;
+    }
+    .logo{
+        font-size: 4rem;
+    }
+}
+@media screen and (max-width: 385px) {
+    .header{
+        position: relative;
+    }
+    .logo{
+        font-size: 15vw;
     }
 }

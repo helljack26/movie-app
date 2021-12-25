@@ -11,3 +11,11 @@ body {
   height: 100vh;
   font-family: sans-serif;
 }
+
+@media screen and (max-width: 385px) {
+  body {
+    overflow: visible;
+    height: 100%;
+
+  }
+}

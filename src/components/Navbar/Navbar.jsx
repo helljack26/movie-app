@@ -12,19 +12,24 @@ const Navbar = ({ active }) => {
         case 'popular':
             return (<>
                 <div id='navbar' className={style.navbar}>
-                    <Link id='popular' to="" className={`${style.navbarLink} ${style.active}`}>Popular</Link>
-                    <Link id='watch' to="/watch-list" className={style.navbarLink}>Watch list</Link>
+                    <div className={style.navbarBlock}>
+                        <Link id='popular' to="" className={`${style.navbarLink} ${style.active}`}>Popular</Link>
+                        <Link id='watch' to="/watch-list" className={style.navbarLink}>Watch list</Link>
+                    </div>
+                    <QueryInput />
                 </div>
-                <QueryInput />
+
             </>)
         case 'watch':
             return (
                 <>
                     <div id='navbar' className={style.navbar}>
-                        <Link id='popular' to="/" className={style.navbarLink} onClick={() => dispatch(getFilmListFromApi(true))}>Popular</Link>
-                        <Link id='watch' to="/watch-list" className={`${style.navbarLink} ${style.active}`}>Watch list</Link>
-                    </div>
-                    <div className={style.emptyInput}>
+                        <div className={style.navbarBlock}>
+                            <Link id='popular' to="/" className={style.navbarLink} onClick={() => dispatch(getFilmListFromApi(true))}>Popular</Link>
+                            <Link id='watch' to="/watch-list" className={`${style.navbarLink} ${style.active}`}>Watch list</Link>
+                        </div>
+                        <div className={style.emptyInput}>
+                        </div>
                     </div>
                 </>
             )
@@ -32,22 +37,28 @@ const Navbar = ({ active }) => {
             return (
                 <>
                     <div id='navbar' className={style.navbar}>
-                        <Link id='popular' to="/" className={style.navbarLink}
-                            onClick={() => dispatch(getFilmListFromApi(true))}>Popular</Link>
-                        <Link id='watch' to="/watch-list" className={style.navbarLink} >Watch list</Link>
+                        <div className={style.navbarBlock}>
+                            <Link id='popular' to="/" className={style.navbarLink}
+                                onClick={() => dispatch(getFilmListFromApi(true))}>Popular</Link>
+                            <Link id='watch' to="/watch-list" className={style.navbarLink} >Watch list</Link>
+                        </div>
+                        <QueryInput />
                     </div>
-                    <QueryInput />
+
                 </>
             )
         default:
             return <>
                 <div id='navbar' className={style.navbar}>
-                    <Link id='popular' to="/" className={style.navbarLink}
-                        onClick={() => dispatch(getFilmListFromApi(true))}>Popular</Link>
-                    <Link id='watch' to="/watch-list" className={style.navbarLink}>Watch list</Link>
+                    <div className={style.navbarBlock}>
+                        <Link id='popular' to="/" className={style.navbarLink}
+                            onClick={() => dispatch(getFilmListFromApi(true))}>Popular</Link>
+                        <Link id='watch' to="/watch-list" className={style.navbarLink}>Watch list</Link>
+                    </div>
+                    <div className={style.emptyInput}>
+                    </div>
                 </div>
-                <div className={style.emptyInput}>
-                </div>
+
             </>
     }
 }

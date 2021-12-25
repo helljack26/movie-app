@@ -1,5 +1,4 @@
 .popularHeader {
-    height: 6vh;
     width: 100%;
     display: flex;
     align-items: flex-end;
@@ -9,7 +8,7 @@
     padding: 0px;
     font-family: monospace;
     margin: 0 auto;
-    margin-top: 18px;
+    margin-top: 10px;
     font-size: 1.8rem;
     text-transform: uppercase;
     word-wrap: break-word;
@@ -77,6 +76,7 @@ main::-webkit-scrollbar-thumb {
         column-count: 2;
     }
     .popularHeader{
+        margin-top: 10px;
         font-size: 6vw;
     }
 }
@@ -85,6 +85,9 @@ main::-webkit-scrollbar-thumb {
     .filmListBlock {
         column-count: 2;
     }
+    .popularHeader{
+        margin-top: 10px;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -92,4 +95,10 @@ main::-webkit-scrollbar-thumb {
         column-count: 1;
     }
 
+}
+@media screen and (max-width: 385px) {
+main{
+    overflow-y: auto;
+    height:fit-content;
+}
 }
