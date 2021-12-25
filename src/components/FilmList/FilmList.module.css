@@ -1,27 +1,17 @@
-
-.header {
-    width: 100vw;
+.popularHeader{
     display: flex;
-    background-color: rgb(29, 29, 29);
-    color: white;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 10px 0px;
-    box-shadow: rgba(50, 50, 93, 0.631) 0px 13px 27px -5px, rgba(0, 0, 0, 0.686) 0px 8px 16px -8px;
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 999;
-}
-.header >a{
-    color: white;
-}
-
-h1{
+    align-items: flex-end;
+    justify-content: center;
+    font-weight: bold;
+    padding: 20px 0px;
     font-family: monospace;
     margin: 0;
-    font-size: 3.5rem;
+    font-size: 3vw;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
+
 a{
     color: rgb(33, 33, 33);
     text-transform: uppercase;
@@ -34,11 +24,36 @@ a:hover {
 }
 
 main{
-    margin: 20px 30px;
-    display: grid;
-    justify-content: center;
-    column-gap: 15px;
-    row-gap: 15px;
-    grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
-    grid-template-rows: fit-content;
+    width: 95vw;
+    margin: 0px 30px;
+	column-count: 5;
+	column-gap: 15px;
+}
+
+@media screen and (max-width: 1200px) {
+    main{
+        column-count: 4;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    main{
+        column-count: 3;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    main{
+        column-count: 3;
+    }
+}
+@media screen and (max-width: 560px) {
+    main{
+        column-count: 2;
+    }
+}
+@media screen and (max-width: 400px) {
+    main{
+        column-count: 1;
+    }
 }

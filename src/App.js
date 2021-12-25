@@ -1,16 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import FilmDetails from './components/FilmDetails';
-import FilmList from './components/FilmList';
-import FavoritesCharacters from './components/FavoritesCharacters';
+import FilmDetailsPage from './components/FilmDetailsPage';
+import FilmListPage from './components/FilmListPage';
+import FilmsWatchPage from './components/FilmsWatchPage';
 
 const App = () =>
 {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<FilmList />} />
-        <Route path="/:id" element={<FilmDetails />} />
-        <Route path="/watch-list" element={<FavoritesCharacters />} />
+        <Route path="/" element={<FilmListPage />} />
+        <Route path="/:id" element={<FilmDetailsPage />} />
+        <Route path="/watch-list" element={<FilmsWatchPage />} />
       </Routes>
     </BrowserRouter>
   );

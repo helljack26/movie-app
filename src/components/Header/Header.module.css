@@ -1,0 +1,63 @@
+.header {
+    width: 100vw;
+    display: flex;
+    background-color: #1e3942;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px;
+    box-shadow: rgba(50, 50, 93, 0.631) 0px 13px 27px -5px, rgba(0, 0, 0, 0.686) 0px 8px 16px -8px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    user-select: none;
+    z-index: 999;
+}
+.header >a{
+    color: white;
+}
+.logo{
+    text-transform: uppercase;
+    user-select: none;
+    font-family: monospace;
+    margin: 0;
+    font-size: 3rem;
+}
+.logo:hover{
+    color: white;
+    pointer-events: none;
+    cursor: default;
+}
+
+.popular{
+    color: whitesmoke;
+    font-size: 1.5rem;
+    padding: 15px 20px;
+}
+.popular:hover{
+    color: whitesmoke;
+    background-color: #102d37;
+}
+.watch{
+    color: whitesmoke;
+    font-size: 1.5rem;
+    padding: 15px 20px;
+}
+.watch:hover{
+    color: whitesmoke;
+    background-color: #102d37;
+}
+
+.active {
+    color: rgb(199, 199, 199);
+    background-color: #031b22;
+    height: 100%;
+    padding: 15px 20px;
+}
+.active:hover {
+    color: whitesmoke;
+    background-color: #102d37;
+}
+.emptyInput{
+    width:26vw;
+}
