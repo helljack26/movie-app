@@ -5,7 +5,7 @@ import {
     SET_FILM_DETAILS,
     SET_WATCH_LIST,
     SET_LOADING
-} from './types';
+} from './actions';
 
 export const filmApi = (
     state = {

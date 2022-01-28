@@ -24,7 +24,7 @@ export const setLoading = (payload) => {
     return { type: SET_LOADING, payload }
 }
 
-export const getFilmListFromApi = (reload = false) => async (dispatch, getState) => {
+export const getFilmListFromApi = (reload = false) => (dispatch, getState) => {
     const state = getState();
     const searchFilm = state.filmApi.searchFilm;
     const filmList = state.filmApi.filmList;
@@ -47,7 +47,7 @@ export const getFilmListFromApi = (reload = false) => async (dispatch, getState)
         url = urlArray.search
         dispatch(updatePageTitle(`Search results for "${searchFilm}"`))
     }
-    await fetch(url)
+    fetch(url)
         .then((response) => response.json())
         .then((data) => {
             const modifiedData = !data.errors ? checkInWatchList(data.results, dispatch) : null;
@@ -95,10 +95,9 @@ export const checkInWatchList = (results, dispatch) => {
         default:
             return modifiedData
     }
-
-
 }
-export const toWatchList = (title, image, genre, id) => async (dispatch, getState) => {
+
+export const toWatchList = (title, image, genre, id) => (dispatch, getState) => {
     const state = getState();
     const watchList = state.filmApi.watchList;
 
@@ -120,20 +119,18 @@ export const toWatchList = (title, image, genre, id) => async (dispatch, getStat
         return [...new Map(arr.map(item => [item[key], item])).values()]
     }
     function deleteUniqueFromList(arr, key) {
-        return arr.filter((item) => {
-            return item.id !== key;
-        });
+        return arr.filter((item) => item.id !== key);
     }
     const cleanWatchList = actionType !== 'add' ? deleteUniqueFromList(watchList, id) : getUniqueListBy(watchList, 'id');
     localStorage.setItem('watchList', JSON.stringify(cleanWatchList))
     return dispatch(setWatchList(cleanWatchList))
 }
 
-export const getFilmDetailsFromApi = (id) => async (dispatch) => {
+export const getFilmDetailsFromApi = (id) => (dispatch) => {
     // Spinner
     dispatch(setLoading(true))
     const url = `https://api.themoviedb.org/3/movie/${id}?api_key=4d0c68776909a3f926088d7ddf14c097`;
-    await fetch(url)
+    fetch(url)
         .then((response) => response.json())
         .then((data) => {
             return dispatch(setFilmDetails(data))

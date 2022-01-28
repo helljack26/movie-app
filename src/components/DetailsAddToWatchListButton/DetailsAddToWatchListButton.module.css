@@ -65,6 +65,7 @@
     background-color: #102d37;
 }
 
+/*tooltip */
 .tooltip {
     visibility: hidden;
     z-index: 200;
@@ -85,7 +86,7 @@
     transition: all 0.3s ease-in-out;
     box-shadow: 0 0 3px rgba(56, 54, 54, 0.86);
 }
-
+/* tooltip  after*/
  .tooltip::after {
     content: " ";
     width: 0;
@@ -127,9 +128,6 @@
     left: -170%;
 }
 
-.tooltipLeft{
-    left: -150%;
-}
 .left .tooltip::after {
     top: 40%;
     left: 90%;

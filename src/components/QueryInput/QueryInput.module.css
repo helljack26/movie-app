@@ -37,6 +37,7 @@ input:focus::placeholder {
     box-sizing: border-box;
     border-left: 1px solid gray;
     background-color: #02141a;
+    transition: all 0.3s ease-in-out;
 }
 .searchBtn > img{
     width: 20px;

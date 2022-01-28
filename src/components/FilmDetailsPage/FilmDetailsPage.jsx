@@ -3,9 +3,16 @@ import style from './FilmDetailsPage.module.css';
 import Header from '../Header';
 import LoadingPage from '../LoadingPage';
 import { translateGenre } from '../Helpers/translateGenre.js';
-import { FilmDetailsSubscription } from '../Helpers/filmDetailsSubscription.js';
-import AddToWatchListButton from '../AddToWatchListButton';
+import DetailsAddToWatchListButton from '../DetailsAddToWatchListButton';
 
+const FilmDetailsSubscription = function ({ property, value }) {
+    return (
+        <div className={style.detailItem}>
+            <p className={style.detailProperty}>{property}: </p>
+            <p>{value}</p>
+        </div>
+    )
+}
 
 const FilmDetailsPage = () => {
     const filmDetails = useSelector(state => state.filmApi.filmDetails)
@@ -14,7 +21,8 @@ const FilmDetailsPage = () => {
         const localStorageWatchList = window.localStorage.getItem('watchList')
         const localStorageWatchListJson = JSON.parse(localStorageWatchList);
         const filmFromLocalStorage = localStorageWatchListJson !== null ? localStorageWatchListJson.find(film => film.id === id) : false
-        const buttonType = Boolean(filmFromLocalStorage) === true ? 'detailsInWatch' : 'detailsNotInWatch'
+        const buttonType = Boolean(filmFromLocalStorage) ? false : true
+        console.log(buttonType);
         return buttonType
     }
     // For render page 
@@ -33,7 +41,7 @@ const FilmDetailsPage = () => {
                             <h1 className={style.filmName}>{filmDetails.title}</h1>
                             <h2>{filmDetails.release_date.slice(0, 4)}</h2>
                         </div>
-                        <AddToWatchListButton name={filmDetails.title} image={filmDetails.poster_path} genre={genreForState} id={filmDetails.id} buttonType={checkInLocalStorage(filmDetails.id)} />
+                        <DetailsAddToWatchListButton name={filmDetails.title} image={filmDetails.poster_path} genre={genreForState} id={filmDetails.id} buttonType={checkInLocalStorage(filmDetails.id)} />
                     </div>
                     <div className={style.main}>
                         {/* Poster */}

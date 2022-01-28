@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Header';
 import FilmList from '../FilmList';
 import LoadingPage from '../LoadingPage';
-import { getFilmListFromApi } from '../../store/filmApi/types';
+import { getFilmListFromApi } from '../../store/filmApi/actions';
 
 const FilmListPage = () => {
     const filmList = useSelector(state => state.filmApi.filmList)

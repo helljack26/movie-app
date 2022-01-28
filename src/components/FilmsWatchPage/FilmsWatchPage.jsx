@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Header from '../Header';
 import FilmWatchList from '../FilmWatchList';
-import { updatePageTitle, setWatchList } from '../../store/filmApi/types';
+import { updatePageTitle, setWatchList } from '../../store/filmApi/actions';
 
 const FilmsWatchPage = () => {
   const dispatch = useDispatch();

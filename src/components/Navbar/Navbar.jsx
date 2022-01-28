@@ -1,7 +1,7 @@
 import QueryInput from '../QueryInput';
 import style from './Navbar.module.css';
 import { Link } from 'react-router-dom';
-import { getFilmListFromApi } from '../../store/filmApi/types';
+import { getFilmListFromApi } from '../../store/filmApi/actions';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Navbar = ({ active }) => {

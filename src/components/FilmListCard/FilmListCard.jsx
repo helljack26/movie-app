@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { translateGenre } from '../Helpers/translateGenre.js';
-import { getFilmDetailsFromApi } from '../../store/filmApi/types';
+import { getFilmDetailsFromApi } from '../../store/filmApi/actions';
 import style from './FilmListCard.module.css';
 import AddToWatchListButton from '../AddToWatchListButton';
 
