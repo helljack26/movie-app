@@ -18,8 +18,7 @@ const FilmDetailsPage = () => {
     const filmDetails = useSelector(state => state.filmApi.filmDetails)
     const loading = useSelector(state => state.filmApi.loading)
     function checkInLocalStorage(id) {
-        const localStorageWatchList = window.localStorage.getItem('watchList')
-        const localStorageWatchListJson = JSON.parse(localStorageWatchList);
+        const localStorageWatchListJson = JSON.parse(window.localStorage.getItem('watchList'));
         const filmFromLocalStorage = localStorageWatchListJson !== null ? localStorageWatchListJson.find(film => film.id === id) : false
         const buttonType = Boolean(filmFromLocalStorage) ? false : true
         console.log(buttonType);

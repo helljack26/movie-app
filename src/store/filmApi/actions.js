@@ -75,37 +75,31 @@ export const checkInWatchList = (results, dispatch) => {
         }
         return modifiedDataItem
     })
-    let checkType
-    const localStorageWatchList = window.localStorage.getItem('watchList')
-    const localStorageWatchListJson = JSON.parse(localStorageWatchList)
-    localStorageWatchList === null ? checkType = 'initial' : checkType = 'compare with localStorage'
 
     function checkInLocalStorage(item) {
         const filmFromLocalStorage = localStorageWatchListJson.find(film => film.id === item.id)
         return Boolean(filmFromLocalStorage) === true ? filmFromLocalStorage : item;
     }
-    switch (checkType) {
-        case 'initial':
-            return modifiedData
-        case 'compare with localStorage':
-            dispatch(setWatchList(localStorageWatchListJson))
-            return modifiedData.map((item) => {
-                return checkInLocalStorage(item)
-            })
-        default:
-            return modifiedData
-    }
+
+    const localStorageWatchListJson = JSON.parse(window.localStorage.getItem('watchList'))
+
+    const isLocalStorage = localStorageWatchListJson !== null ? true : false
+    return isLocalStorage === true ?
+        (dispatch(setWatchList(localStorageWatchListJson)),
+            modifiedData.map((item) => checkInLocalStorage(item))
+        )
+        :
+        modifiedData
 }
 
 export const toWatchList = (title, image, genre, id) => (dispatch, getState) => {
     const state = getState();
     const watchList = state.filmApi.watchList;
 
-    let actionType
-    if (title === undefined && image === undefined && genre === undefined) {
-        actionType = 'remove'
-    } else {
-        actionType = 'add'
+    const removeCondition = title === undefined && image === undefined && genre === undefined;
+    const isRemove = removeCondition ? true : false;
+
+    const getUniqueListBy = (arr, key) => {
         const newInWatchItem = {
             name: title,
             poster_path: image,
@@ -114,14 +108,13 @@ export const toWatchList = (title, image, genre, id) => (dispatch, getState) => 
             inWatch: true
         }
         watchList.push(newInWatchItem)
-    }
-    function getUniqueListBy(arr, key) {
         return [...new Map(arr.map(item => [item[key], item])).values()]
     }
-    function deleteUniqueFromList(arr, key) {
+    const deleteUniqueFromList = (arr, key) => {
         return arr.filter((item) => item.id !== key);
     }
-    const cleanWatchList = actionType !== 'add' ? deleteUniqueFromList(watchList, id) : getUniqueListBy(watchList, 'id');
+
+    const cleanWatchList = isRemove === true ? deleteUniqueFromList(watchList, id) : getUniqueListBy(watchList, 'id');
     localStorage.setItem('watchList', JSON.stringify(cleanWatchList))
     return dispatch(setWatchList(cleanWatchList))
 }
