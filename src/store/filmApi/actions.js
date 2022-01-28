@@ -99,7 +99,7 @@ export const toWatchList = (title, image, genre, id) => (dispatch, getState) => 
     const removeCondition = title === undefined && image === undefined && genre === undefined;
     const isRemove = removeCondition ? true : false;
 
-    const getUniqueListBy = (arr, key) => {
+    const addToWatchList = (arr, key) => {
         const newInWatchItem = {
             name: title,
             poster_path: image,
@@ -110,11 +110,11 @@ export const toWatchList = (title, image, genre, id) => (dispatch, getState) => 
         watchList.push(newInWatchItem)
         return [...new Map(arr.map(item => [item[key], item])).values()]
     }
-    const deleteUniqueFromList = (arr, key) => {
+    const deleteFromWatchList = (arr, key) => {
         return arr.filter((item) => item.id !== key);
     }
 
-    const cleanWatchList = isRemove === true ? deleteUniqueFromList(watchList, id) : getUniqueListBy(watchList, 'id');
+    const cleanWatchList = isRemove === true ? deleteFromWatchList(watchList, id) : addToWatchList(watchList, 'id');
     localStorage.setItem('watchList', JSON.stringify(cleanWatchList))
     return dispatch(setWatchList(cleanWatchList))
 }
