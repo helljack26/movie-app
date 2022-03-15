@@ -6,9 +6,9 @@ import LoadingPage from '../LoadingPage';
 import { getFilmListFromApi } from '../../store/filmApi/actions';
 
 const FilmListPage = () => {
+    const dispatch = useDispatch()
     const filmList = useSelector(state => state.filmApi.filmList)
 
-    const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getFilmListFromApi())
     }, [dispatch])

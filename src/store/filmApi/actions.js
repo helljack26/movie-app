@@ -26,6 +26,7 @@ export const setLoading = (payload) => {
 
 export const getFilmListFromApi = (reload = false) => (dispatch, getState) => {
     const state = getState();
+    console.log('work');
     const searchFilm = state.filmApi.searchFilm;
     const filmList = state.filmApi.filmList;
     // Spinner on
@@ -35,6 +36,7 @@ export const getFilmListFromApi = (reload = false) => (dispatch, getState) => {
     if (reload === true) {
         dispatch(setLoading(true))
     }
+
     const urlArray = {
         popular: 'https://api.themoviedb.org/3/trending/movie/day?api_key=4d0c68776909a3f926088d7ddf14c097',
         search: `https://api.themoviedb.org/3/search/movie?api_key=4d0c68776909a3f926088d7ddf14c097&query=${searchFilm}`
@@ -47,6 +49,7 @@ export const getFilmListFromApi = (reload = false) => (dispatch, getState) => {
         url = urlArray.search
         dispatch(updatePageTitle(`Search results for "${searchFilm}"`))
     }
+
     fetch(url)
         .then((response) => response.json())
         .then((data) => {

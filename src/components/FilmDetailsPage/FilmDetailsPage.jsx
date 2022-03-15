@@ -1,9 +1,13 @@
 import { useSelector } from 'react-redux';
+import { useParams } from "react-router-dom"
+import { useEffect } from 'react'
 import style from './FilmDetailsPage.module.css';
 import Header from '../Header';
 import LoadingPage from '../LoadingPage';
-import { translateGenre } from '../Helpers/translateGenre.js';
 import DetailsAddToWatchListButton from '../DetailsAddToWatchListButton';
+import { translateGenre } from '../Helpers/translateGenre.js';
+import { useDispatch } from 'react-redux';
+import { getFilmDetailsFromApi } from '../../store/filmApi/actions';
 
 const FilmDetailsSubscription = function ({ property, value }) {
     return (
@@ -13,7 +17,6 @@ const FilmDetailsSubscription = function ({ property, value }) {
         </div>
     )
 }
-
 const checkInLocalStorage = (id) => {
     const localStorageWatchList = JSON.parse(window.localStorage.getItem('watchList'));
     const filmFromLocalStorage = localStorageWatchList !== null ? localStorageWatchList.find(film => film.id === id) : false
@@ -21,8 +24,15 @@ const checkInLocalStorage = (id) => {
 }
 
 const FilmDetailsPage = () => {
+    const params = useParams();
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getFilmDetailsFromApi(params.id))
+    }, [dispatch, params.id])
+
     const filmDetails = useSelector(state => state.filmApi.filmDetails)
     const loading = useSelector(state => state.filmApi.loading)
+    console.log(filmDetails);
 
     // For button add to state
     const isGenre = filmDetails.genres !== undefined && filmDetails.genres !== null && filmDetails.genres !== '';

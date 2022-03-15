@@ -1,13 +1,10 @@
 import style from './LoadingPage.module.css'
 
-const LoadingPage = () =>
-{
+const LoadingPage = () => {
     return (
-        <>
-            <div className={style.spinnerBlock}>
-                <div className={style.spinner}></div>
-            </div>
-        </>
+        <div className={style.spinnerBlock}>
+            <div className={style.spinner}></div>
+        </div>
     )
 }
 
