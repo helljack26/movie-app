@@ -32,7 +32,6 @@ const FilmDetailsPage = () => {
 
     const filmDetails = useSelector(state => state.filmApi.filmDetails)
     const loading = useSelector(state => state.filmApi.loading)
-    console.log(filmDetails);
 
     // For button add to state
     const isGenre = filmDetails.genres !== undefined && filmDetails.genres !== null && filmDetails.genres !== '';
