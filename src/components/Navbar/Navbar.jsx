@@ -18,6 +18,7 @@ const Navbar = ({ active }) => {
                     </div>
                     <QueryInput />
                 </div>
+
             )
         case 'watch':
             return (
