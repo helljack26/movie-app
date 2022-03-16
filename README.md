@@ -2,6 +2,8 @@
   
  Display popular movies with using API [The Movie DB](https://www.themoviedb.org).  
 
+You can watch deployed project [here](https://helljack26.github.io/movie-app/).
+
  Manage your watchlist(`localstorage`).  
  
  In this project I mastered:
