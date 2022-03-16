@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import { useEffect } from 'react';
 
 import style from './FilmDetailsPage.module.css';
@@ -27,7 +27,8 @@ const checkInLocalStorage = (id) => {
 const FilmDetailsPage = () => {
     const dispatch = useDispatch();
     const params = useParams();
-
+    const navigate = useLocation();
+    console.log(navigate);
     useEffect(() => {
         dispatch(setLoading(true))
         const url = `https://api.themoviedb.org/3/movie/${params.id}?api_key=4d0c68776909a3f926088d7ddf14c097`;
@@ -49,7 +50,6 @@ const FilmDetailsPage = () => {
     const genreForState = isGenre ? filmDetails.genres.map((item) => item.id) : null;
 
     const genres = isGenre ? translateGenre(filmDetails.genres.map((item) => item.id)) : null
-    console.log(filmDetails);
     return (
         <>
             {loading ? (

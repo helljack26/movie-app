@@ -26,7 +26,6 @@ export const setLoading = (payload) => {
 
 export const getFilmListFromApi = (reload = false) => (dispatch, getState) => {
     const state = getState();
-    console.log('work');
     const searchFilm = state.filmApi.searchFilm;
     const filmList = state.filmApi.filmList;
     // Spinner on
