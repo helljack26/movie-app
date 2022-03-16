@@ -1,12 +1,3 @@
-.filmName{
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin-top: -5px;
-    margin-bottom: 10px;
-    text-decoration: none;
-    text-align: center;
-    text-transform: uppercase;
-}
 .filmListCard{
     border-radius: 15px;
     background-color: rgb(192, 192, 192);
@@ -16,8 +7,17 @@
 	height: auto;
 	display: inline-block;
     width: 100%;
-    margin-top: 15px;
+    margin-top: 28px;
     position: relative;
+}
+.filmName{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
 }
 .filmListCard:hover{
     color: rgb(238, 238, 238);
@@ -39,23 +39,6 @@ img{
 .filmDescription{
     padding: 10px 15px;
     text-transform: capitalize;
-}
-.addIconBtn{
-    position: absolute;
-    top: 25px;
-    right: 10px;
-    border: none;
-    background-color: transparent;
-}
-.addIcon{
-    width: 45px;
-    opacity: 0.8;
-    z-index: 50;
-    cursor: pointer;
-}
-.addIcon:hover{
-    opacity: 1;
-    filter: invert(50%);
 }
 .cardBlock{
     position: relative;

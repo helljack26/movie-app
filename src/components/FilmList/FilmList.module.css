@@ -1,59 +1,103 @@
-.popularHeader{
+.popularHeader {
+    width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    text-align: center;
     font-weight: bold;
-    padding: 20px 0px;
+    padding: 0px;
     font-family: monospace;
-    margin: 0;
-    font-size: 3vw;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-size: 1.8rem;
     text-transform: uppercase;
     word-wrap: break-word;
     white-space: pre-wrap;
 }
 
-a{
+a {
     color: rgb(33, 33, 33);
     text-transform: uppercase;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
     text-decoration: none;
 }
+
 a:hover {
     color: #000;
 }
 
-main{
-    width: 95vw;
-    margin: 0px 30px;
-	column-count: 5;
-	column-gap: 15px;
+main {
+    width: 100vw;
+    height: 85vh;
+    padding: 0px 30px;
+    margin: 0px;
+    overflow-y: scroll;
+}
+
+main::-webkit-scrollbar {
+    width: 10px;
+}
+
+main::-webkit-scrollbar-track {
+    background: -webkit-gradient(linear, left top, left bottom, from(#1e3942), to(#929292));
+    background: linear-gradient(180deg, #042b38, #929292);
+    border-radius: 5px;
+}
+
+main::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#929292), to(#1e3942));
+    background: linear-gradient(180deg, #929292, #042b38);
+}
+
+.filmListBlock {
+    width: 100%;
+    padding-bottom: 35px;
+    column-count: 5;
+    column-gap: 15px;
 }
 
 @media screen and (max-width: 1200px) {
-    main{
+    .filmListBlock {
         column-count: 4;
     }
 }
 
 @media screen and (max-width: 900px) {
-    main{
+    .filmListBlock {
         column-count: 3;
     }
 }
 
 @media screen and (max-width: 700px) {
-    main{
-        column-count: 3;
-    }
-}
-@media screen and (max-width: 560px) {
-    main{
+    .filmListBlock {
         column-count: 2;
     }
+    .popularHeader{
+        margin-top: 10px;
+        font-size: 6vw;
+    }
 }
+
+@media screen and (max-width: 560px) {
+    .filmListBlock {
+        column-count: 2;
+    }
+    .popularHeader{
+        margin-top: 10px;
+    }
+}
+
 @media screen and (max-width: 400px) {
-    main{
+    .filmListBlock {
         column-count: 1;
     }
+
+}
+@media screen and (max-width: 385px) {
+main{
+    overflow-y: auto;
+    height:fit-content;
+}
 }

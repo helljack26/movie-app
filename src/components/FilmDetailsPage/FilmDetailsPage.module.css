@@ -1,24 +1,52 @@
+.filmDetailsMain{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 91vh;
+    padding-bottom: 40px;
+    width: 100%;
+}
+.filmDetailsMain::-webkit-scrollbar {
+    width: 10px;
+}
+
+.filmDetailsMain::-webkit-scrollbar-track {
+    background: -webkit-gradient(linear, left top, left bottom, from(#1e3942), to(#929292));
+    background: linear-gradient(180deg, #042b38, #929292);
+    border-radius: 5px;
+}
+
+.filmDetailsMain::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#929292), to(#1e3942));
+    background: linear-gradient(180deg, #929292, #042b38);
+}
+
 .header{
     background: #0F2027; 
     background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027); 
     background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
     color: white;
-    height: 150px;
-    width: 85vw;
+    min-height: max-content;
+    width: 90vw;
     border-radius: 40px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 29vw;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 15px;
+    padding: 10px 0px;
+    padding-left: 32vw;
+    padding-right: 30px;
     margin: 0 auto;
     margin-top: 30px;
     -webkit-box-shadow: 0px 18px 33px -4px rgba(0, 0, 0, 0.6) inset;
     -moz-box-shadow: 0px 18px 33px -4px rgba(0, 0, 0, 0.6) inset;
     box-shadow: 0px 18px 33px -4px rgba(0, 0, 0, 0.6) inset;
 }
-h1{
-    font-size: 3rem;
-    margin-bottom: 15px;
+.headerBlock{
+    height: fit-content;
+}
+.filmName{
+    font-size: 3.5vw;
 }
 /* Main */
 .main {
@@ -37,10 +65,10 @@ h1{
 }
 
 .poster {
-    width: 23vw;
+    width: 25vw;
     position: fixed;
-    top: 110px;
-    left: 10vw;
+    top: 115px;
+    left: 8vw;
     -webkit-box-shadow: 0px 8px 24px 7px rgba(78, 82, 85, 0.53);
     -moz-box-shadow: 0px 8px 24px 7px rgba(78, 82, 85, 0.53);
     box-shadow: 0px 8px 24px 7px rgba(78, 82, 85, 0.53);
@@ -58,6 +86,7 @@ h1{
 .detailItem{
     width: 100%;
     display: grid;
+    column-gap: 7px;
     grid-template-columns: 1fr 4fr;
     margin-bottom: 10px;
 }
@@ -65,3 +94,72 @@ h1{
     font-weight: bold;
 }
 
+@media screen and (max-width: 1000px) {
+    .filmDetailsMain{
+        height: 81vh;
+    }
+    .poster {
+        top: 185px;
+    }
+    .logo{
+        font-size: 4rem;
+    }
+}
+@media screen and (max-width: 700px) {
+    .header{
+        width: 95vw;
+        padding-left: 40px;
+        padding-right: 30px;
+    }
+    .filmName{
+        font-size: 5vw;
+    }
+    .main {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100vw;
+        margin: 25px auto;
+        margin-left: 0;
+        margin-bottom: 40px;
+    }
+    .poster {
+        width: 85vw;
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        -webkit-box-shadow: 0px 8px 24px 7px rgba(78, 82, 85, 0.53);
+        -moz-box-shadow: 0px 8px 24px 7px rgba(78, 82, 85, 0.53);
+        box-shadow: 0px 8px 24px 7px rgba(78, 82, 85, 0.53);
+    }
+    .detailBlock{
+        background-color: whitesmoke;
+        padding: 20px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        width: 90%;
+        -webkit-box-shadow: 0px 8px 24px 7px rgba(78, 82, 85, 0.53);
+        -moz-box-shadow: 0px 8px 24px 7px rgba(78, 82, 85, 0.53);
+        box-shadow: 0px 8px 24px 7px rgba(78, 82, 85, 0.53);
+    }
+    .logo{
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 385px) {
+    .filmDetailsMain{
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 100%;
+        width: 100%;
+    }
+    .filmName{
+    font-size: 10vw;
+}
+    .header{
+     flex-direction: column;
+    }
+  }

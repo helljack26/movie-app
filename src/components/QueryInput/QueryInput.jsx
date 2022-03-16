@@ -1,14 +1,15 @@
 import style from './QueryInput.module.css';
-import { useDispatch } from 'react-redux';
-import { updateSearchFilm, getFilmListFromApi } from '../../store/filmApi/types';
-const QueryInput = () =>
-{
+import { useDispatch, useSelector } from 'react-redux';
+import { updateSearchFilm, getFilmListFromApi } from '../../store/filmApi/actions';
+import searchIcon from '../img/search.svg';
+
+const QueryInput = () => {
   const dispatch = useDispatch();
-  const handleKeyPress = ( event ) =>
-  {
-    if ( event.key === 'Enter' && event.target.value !== '' )
-    {
-      dispatch( getFilmListFromApi() )
+  const searchFilm = useSelector(state => state.filmApi.searchFilm);
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter' && event.target.value !== '') {
+      dispatch(getFilmListFromApi());
     }
   }
   return (
@@ -17,13 +18,12 @@ const QueryInput = () =>
         placeholder='Search film'
         name="query"
         id="gender"
-        onKeyPress={( event ) => handleKeyPress( event )}
-        onInput={( event ) => dispatch( updateSearchFilm( event.target.value ) )}
+        onKeyPress={(event) => handleKeyPress(event)}
+        onInput={(event) => dispatch(updateSearchFilm(event.target.value))}
       />
       <button className={style.searchBtn}
-        onClick={() => dispatch( getFilmListFromApi() )}>
-        <img src="./img/search.svg" alt="search icon" />
-
+        onClick={() => searchFilm !== '' ? dispatch(getFilmListFromApi()) : null}>
+        <img src={searchIcon} alt="search icon" />
       </button>
     </div>
   );

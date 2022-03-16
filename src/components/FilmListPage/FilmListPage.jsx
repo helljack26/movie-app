@@ -3,27 +3,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Header';
 import FilmList from '../FilmList';
 import LoadingPage from '../LoadingPage';
+import { getFilmListFromApi } from '../../store/filmApi/actions';
 
-import { getFilmListFromApi } from '../../store/filmApi/types';
-
-const FilmListPage = () =>
-{
-    const filmList = useSelector( state => state.filmApi.filmList )
-
+const FilmListPage = () => {
     const dispatch = useDispatch()
-    useEffect( () =>
-    {
-        dispatch( getFilmListFromApi() )
-    }, [dispatch] )
+    const filmList = useSelector(state => state.filmApi.filmList)
 
-    const loading = useSelector( state => state.filmApi.loading )
+    useEffect(() => {
+        dispatch(getFilmListFromApi())
+    }, [dispatch])
+
+    const loading = useSelector(state => state.filmApi.loading)
     return (
         <>
             {loading ? (
                 <LoadingPage />
             ) : (
-                    <> <Header active={'popular'} />,
-                        <FilmList filmList={filmList} /></>
+                    <>
+                        <Header active={'popular'} />
+                        <FilmList filmList={filmList} />
+                    </>
                 )}
         </>
     );

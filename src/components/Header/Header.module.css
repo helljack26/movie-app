@@ -1,5 +1,7 @@
 .header {
     width: 100vw;
+    height: 9vh;
+    min-height: 45px;
     display: flex;
     background-color: #1e3942;
     color: white;
@@ -9,6 +11,7 @@
     box-shadow: rgba(50, 50, 93, 0.631) 0px 13px 27px -5px, rgba(0, 0, 0, 0.686) 0px 8px 16px -8px;
     position: sticky;
     top: 0;
+    white-space: nowrap;
     left: 0;
     user-select: none;
     z-index: 999;
@@ -29,35 +32,20 @@
     cursor: default;
 }
 
-.popular{
-    color: whitesmoke;
-    font-size: 1.5rem;
-    padding: 15px 20px;
+@media screen and (max-width: 1000px) {
+    .header{
+        height: fit-content;
+        flex-direction: column;
+    }
+    .logo{
+        font-size: 4rem;
+    }
 }
-.popular:hover{
-    color: whitesmoke;
-    background-color: #102d37;
-}
-.watch{
-    color: whitesmoke;
-    font-size: 1.5rem;
-    padding: 15px 20px;
-}
-.watch:hover{
-    color: whitesmoke;
-    background-color: #102d37;
-}
-
-.active {
-    color: rgb(199, 199, 199);
-    background-color: #031b22;
-    height: 100%;
-    padding: 15px 20px;
-}
-.active:hover {
-    color: whitesmoke;
-    background-color: #102d37;
-}
-.emptyInput{
-    width:26vw;
+@media screen and (max-width: 385px) {
+    .header{
+        position: relative;
+    }
+    .logo{
+        font-size: 15vw;
+    }
 }
