@@ -49,7 +49,7 @@ const FilmDetailsPage = () => {
     const genreForState = isGenre ? filmDetails.genres.map((item) => item.id) : null;
 
     const genres = isGenre ? translateGenre(filmDetails.genres.map((item) => item.id)) : null
-
+    console.log(filmDetails);
     return (
         <>
             {loading ? (
