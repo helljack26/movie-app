@@ -1,13 +1,14 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom"
-import { useEffect } from 'react'
+import { useEffect } from 'react';
+
 import style from './FilmDetailsPage.module.css';
 import Header from '../Header';
 import LoadingPage from '../LoadingPage';
 import DetailsAddToWatchListButton from '../DetailsAddToWatchListButton';
 import { translateGenre } from '../Helpers/translateGenre.js';
-import { useDispatch } from 'react-redux';
-import { getFilmDetailsFromApi } from '../../store/filmApi/actions';
+
+import { setLoading, setFilmDetails } from '../../store/filmApi/actions';
 
 const FilmDetailsSubscription = function ({ property, value }) {
     return (
@@ -24,14 +25,24 @@ const checkInLocalStorage = (id) => {
 }
 
 const FilmDetailsPage = () => {
-    const params = useParams();
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getFilmDetailsFromApi(params.id))
-    }, [dispatch, params.id])
+    const params = useParams();
 
-    const filmDetails = useSelector(state => state.filmApi.filmDetails)
-    const loading = useSelector(state => state.filmApi.loading)
+    useEffect(() => {
+        dispatch(setLoading(true))
+        const url = `https://api.themoviedb.org/3/movie/${params.id}?api_key=4d0c68776909a3f926088d7ddf14c097`;
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+                return (
+                    dispatch(setFilmDetails(data)),
+                    setTimeout(() => dispatch(setLoading(false)), 700)
+                )
+            })
+    }, [dispatch, params.id]);
+
+    const filmDetails = useSelector(state => state.filmApi.filmDetails);
+    const loading = useSelector(state => state.filmApi.loading);
 
     // For button add to state
     const isGenre = filmDetails.genres !== undefined && filmDetails.genres !== null && filmDetails.genres !== '';

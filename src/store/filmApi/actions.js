@@ -66,7 +66,6 @@ export const getFilmListFromApi = (reload = false) => (dispatch, getState) => {
 }
 
 export const checkInWatchList = (results, dispatch) => {
-    // Save necessary film fields
     const modifiedData = results.map((item) => {
         const { title, name, poster_path, genre_ids, id } = item;
         const modifiedDataItem = {
@@ -76,7 +75,7 @@ export const checkInWatchList = (results, dispatch) => {
             id: id,
             inWatch: false
         }
-        return modifiedDataItem
+        return modifiedDataItem;
     })
 
     function checkInLocalStorage(item) {
@@ -92,7 +91,7 @@ export const checkInWatchList = (results, dispatch) => {
             modifiedData.map((item) => checkInLocalStorage(item))
         )
         :
-        modifiedData
+        modifiedData;
 }
 
 export const toWatchList = (title, image, genre, id) => (dispatch, getState) => {
@@ -122,15 +121,4 @@ export const toWatchList = (title, image, genre, id) => (dispatch, getState) => 
     return dispatch(setWatchList(cleanWatchList))
 }
 
-export const getFilmDetailsFromApi = (id) => (dispatch) => {
-    // Spinner
-    dispatch(setLoading(true))
-    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=4d0c68776909a3f926088d7ddf14c097`;
-    fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-            return dispatch(setFilmDetails(data))
-        })
-    setTimeout(() => dispatch(setLoading(false)), 800)
-}
 

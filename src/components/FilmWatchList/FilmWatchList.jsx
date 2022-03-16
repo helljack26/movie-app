@@ -4,7 +4,7 @@ import style from '../FilmList/FilmList.module.css'
 
 const FilmWatchList = ({ watchList = [] }) => {
     const filmTitle = useSelector(state => state.filmApi.filmPageTitle)
-    const isWatchList = watchList === null;
+    const isWatchList = watchList.length === 0;
 
     return isWatchList ?
         <div className={style.popularHeader}>
