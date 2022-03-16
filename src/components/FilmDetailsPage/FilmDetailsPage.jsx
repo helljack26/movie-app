@@ -27,8 +27,6 @@ const checkInLocalStorage = (id) => {
 const FilmDetailsPage = () => {
     const dispatch = useDispatch();
     const params = useParams();
-    const navigate = useLocation();
-    console.log(navigate);
     useEffect(() => {
         dispatch(setLoading(true))
         const url = `https://api.themoviedb.org/3/movie/${params.id}?api_key=4d0c68776909a3f926088d7ddf14c097`;
