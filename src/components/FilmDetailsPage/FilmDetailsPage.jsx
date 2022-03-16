@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useLocation } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useEffect } from 'react';
 
 import style from './FilmDetailsPage.module.css';

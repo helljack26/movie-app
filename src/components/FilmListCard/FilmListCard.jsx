@@ -9,7 +9,7 @@ const FilmListCard = ({ name, image, genre, id, buttonType }) => {
     const genreArr = genre.length !== 0 ? <p>Genre: {translateGenre(genre)}</p> : null;
     return image !== null ? (
         <div className={style.cardBlock}>
-            <Link to={`/movie-app/${id}`}
+            <Link to={`/${id}`}
                 className={style.filmListCard}
                 onClick={() => dispatch(setLoading(true))}
             >

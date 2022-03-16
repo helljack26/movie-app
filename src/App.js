@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import FilmDetailsPage from './components/FilmDetailsPage';
 import FilmListPage from './components/FilmListPage';
 import FilmsWatchPage from './components/FilmsWatchPage';
@@ -6,13 +6,13 @@ import FilmsWatchPage from './components/FilmsWatchPage';
 const App = () => {
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="/movie-app" element={<FilmListPage />} />
-        <Route path="/movie-app/:id" element={<FilmDetailsPage />} />
-        <Route path="/movie-app/watch-list" element={<FilmsWatchPage />} />
+        <Route exact path="/" element={<FilmListPage />} />
+        <Route path="/:id" element={<FilmDetailsPage />} />
+        <Route path="/watch-list" element={<FilmsWatchPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
