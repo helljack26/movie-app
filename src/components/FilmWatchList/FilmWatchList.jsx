@@ -22,7 +22,6 @@ const FilmWatchList = ({ watchList = [] }) => {
                 </div>
             </main>
         </>
-
 }
 
 export default FilmWatchList;
