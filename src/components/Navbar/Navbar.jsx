@@ -14,7 +14,7 @@ const Navbar = ({ active }) => {
                 <div id='navbar' className={style.navbar}>
                     <div className={style.navbarBlock}>
                         <Link id='popular' to="/movie-app" className={`${style.navbarLink} ${style.active}`}>Popular</Link>
-                        <Link id='watch' to="/watch-list" className={style.navbarLink}>Watch list</Link>
+                        <Link id='watch' to="/movie-app/watch-list" className={style.navbarLink}>Watch list</Link>
                     </div>
                     <QueryInput />
                 </div>
@@ -25,7 +25,7 @@ const Navbar = ({ active }) => {
                 <div id='navbar' className={style.navbar}>
                     <div className={style.navbarBlock}>
                         <Link id='popular' to="/movie-app" className={style.navbarLink} onClick={() => dispatch(getFilmListFromApi(true))}>Popular</Link>
-                        <Link id='watch' to="/watch-list" className={`${style.navbarLink} ${style.active}`}>Watch list</Link>
+                        <Link id='watch' to="/movie-app/watch-list" className={`${style.navbarLink} ${style.active}`}>Watch list</Link>
                     </div>
                     <div className={style.emptyInput}>
                     </div>
@@ -37,7 +37,7 @@ const Navbar = ({ active }) => {
                     <div className={style.navbarBlock}>
                         <Link id='popular' to="/movie-app" className={style.navbarLink}
                             onClick={() => dispatch(getFilmListFromApi(true))}>Popular</Link>
-                        <Link id='watch' to="/watch-list" className={style.navbarLink} >Watch list</Link>
+                        <Link id='watch' to="/movie-app/watch-list" className={style.navbarLink} >Watch list</Link>
                     </div>
                     <QueryInput />
                 </div>
@@ -47,7 +47,7 @@ const Navbar = ({ active }) => {
                 <div className={style.navbarBlock}>
                     <Link id='popular' to="/movie-app" className={style.navbarLink}
                         onClick={() => dispatch(getFilmListFromApi(true))}>Popular</Link>
-                    <Link id='watch' to="/watch-list" className={style.navbarLink}>Watch list</Link>
+                    <Link id='watch' to="/movie-app/watch-list" className={style.navbarLink}>Watch list</Link>
                 </div>
                 <div className={style.emptyInput}>
                 </div>

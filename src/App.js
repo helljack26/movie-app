@@ -9,8 +9,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/movie-app" element={<FilmListPage />} />
-        <Route path="/:id" element={<FilmDetailsPage />} />
-        <Route path="/watch-list" element={<FilmsWatchPage />} />
+        <Route path="/movie-app/:id" element={<FilmDetailsPage />} />
+        <Route path="/movie-app/watch-list" element={<FilmsWatchPage />} />
       </Routes>
     </BrowserRouter>
   );
