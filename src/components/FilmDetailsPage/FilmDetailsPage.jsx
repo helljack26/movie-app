@@ -60,7 +60,7 @@ const FilmDetailsPage = () => {
                         <div className={style.header}>
                             <div className={style.headerBlock}>
                                 <h1 className={style.filmName}>{filmDetails.title}</h1>
-                                <h2>{filmDetails.release_date.slice(0, 4)}</h2>
+                                {/* <h2>{filmDetails.release_date.slice(0, 4)}</h2> */}
                             </div>
                             <DetailsAddToWatchListButton name={filmDetails.title} image={filmDetails.poster_path}
                                 genre={genreForState} id={filmDetails.id} buttonType={checkInLocalStorage(filmDetails.id)} />
@@ -78,6 +78,7 @@ const FilmDetailsPage = () => {
                             </div>
                         </div>
                     </div>
+
                 </>}
         </>
     )
